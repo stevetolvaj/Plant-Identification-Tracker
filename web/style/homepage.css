@@ -1,0 +1,115 @@
+/* 
+    Created on : Aug 30, 2022, 1:54:25 PM
+    Assignment : Homework 1
+    Class      : 3308
+    Author     : Steve Tolvaj
+*/
+
+*{ 
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: #5ebb80;
+    font-family: sans-serif;
+}
+
+/********start of navbar********/
+#title { 
+    background-color: #1c301d;
+    color: #c4d77d;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding-left: 1rem;
+    z-index: 1;
+    display:flex; 
+    flex-direction: column;
+    white-space: nowrap;
+    border: 4px solid black;
+}
+
+#nav { /* Text and sizing for nav bar links */
+    font-size: 1.2rem;
+    text-align: right;
+}
+
+#nav ul { /* remove excess margin and padding narrow view.*/
+    padding: 0;
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+#nav li:first-child { /* Border for divider between nav bar links.*/
+    border-right: 2px solid #c4d77d;
+}
+
+#nav li {
+    padding-right: 1rem; /* padding for border between */
+    padding-left:1rem;
+    display: inline;
+    list-style-type: none;
+}
+
+#nav a {
+    color: #c4d77d;
+    text-decoration: none;
+} 
+
+#nav a:hover {
+    color: white;
+}
+/*******end of navbar********/
+
+#content { /* spacing for fixed navbar */
+    padding: 1rem;
+    margin-top: 7rem;
+    margin-bottom: 2rem;
+}
+
+#content img, cite { /* To keep image in center of screen when narrow */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    height: auto;
+    font-size: 0.7rem;
+}
+
+#footer { 
+    position: fixed;
+    bottom: 0px; 
+    left: 0px; 
+    z-index: 1; 
+    white-space: nowrap;
+    background-color:#3c241c;
+    color: #c3d781; 
+    width:100%;
+    text-align:center;
+    padding:8px;
+    border: 4px solid black;
+}
+
+@media only screen and (min-width: 40rem) { 
+    #content {
+        margin-top: 5rem;
+    }
+
+    #nav ul {
+        margin-top: 2.5rem; /* match bottom of nav to bottom of title */
+    }
+
+    #title {
+        flex-direction: row;
+        justify-content: space-between; 
+    } 
+
+    #content img, cite {
+        float: left;
+        margin: 5px;
+        width: 50%;
+        padding-right: 2rem;
+        height: auto;
+    }
+}
