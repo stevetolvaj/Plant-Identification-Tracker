@@ -1,0 +1,16 @@
+/* 
+    Created on : Sep 4, 2022, 4:44:09 PM
+    Author     : Steve Tolvaj
+*/
+
+.NavRouter { 
+    color: #c4d77d;
+}
+
+.NavRouter a { 
+    color: #c4d77d;
+}
+
+.NavRouter .SubMenu a { 
+   color: #3c241c;
+}
