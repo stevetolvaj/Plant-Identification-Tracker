@@ -7,113 +7,95 @@ function homeContent () {
 
 var content = `
 
-        <h3>Home - Advanced Usage of the NavRouter</h3>
-        <p>
-            This example will explain some advanced features 
-            of the NavRouter (and assumes that you have already studied the 
-            previous example entitled "Basic Usage of the NavRouter"). 
-        </p>
-        <ul>
-            <li>
-                When you click on "Account", "Search", and "Tutorial" 
-                (from the Nav Bar above), you'll see that these are not links, 
-                but Drop Down Menu headers which open and close sub menus. 
-            </li>
-            <li>    
-                To define a drop down menu, you add an object (e.g., to 
-                array "myNavList" that has a "header" property and 
-                a "subMenu" property. The subMenu property is just a list 
-                of links (like Home and Blog were). 
-            </li>    
-            <li>
-                Here's how we got the NavRouter to add the "Account" drop down menu 
-                into the Nav Bar: 
-            </li>
-        </ul>
-    
-        <pre>
-    &lt;script>
+       <h3>Functionality and Purpose</h3>
 
-        var myNavList = [
+            <p>&emsp; Welcome to the Plant ID Tracker web application. 
+                if you would like to learn more about plant taxonomy please click 
+                the link here to the 
+                <a href='https://en.wikipedia.org/wiki/Plant_taxonomy'>
+                    Plant Taxonomy Wikipedia</a>.
+                The vast amount of plants and the many types that can be found
+                in the wild is what inspired this application. This website will
+                allow you to join as a member. Share what plants you have found and
+                where you have found them. Most importantly, you will be able to 
+                store your images and descriptions of the plants you have found. 
+                Another option will be to join as a premium member. This will allow
+                you to update and identify plants from others if they are incorrect.
+                There will be a small membership fee to use this application.<br><br>
 
-            // action attribute is a function name - no quotes around home.
-            {linkText: "Home", linkURL: "#/home", action: home},  // a regular "link"
-            {
-                header: "Account",                                // a drop down menu header
-                subMenu: [              // submenu associated with the drop down menu header (above)                      
- 
-                    // This sub-menu link works because it has linkURL and action attributes.
-                    {linkText: "Register", linkURL: "#/register", action: registerContent},
-    
-                    // These links are non-functional because they lack linkURL and action attributes.
-                    {linkText: "Log In"},
-                    {linkText: "Log Out"},
-                    {linkText: "Profile"}
-                ]
-            },
-           
-            // ...
-    
-            // action attribute is a function name - no quotes around blog.
-            {linkText: "Blog", linkURL: "#/blog", action: blog}
-        ];
+                <img src="pics/fern.jpg" alt="Green fern">
 
-        var myNav = MakeNavRouter({
-            navId: "nav",           // this is the id of the div where the nav bar will be injected
-            navList: myNavList,     // the array of objects specified above (object properties: linkText, linkURL, actions)
-            contentId: "content",   // the id where content is to be injected
-            startLink: "#/home"     // routing will set this as the first link. 
-        });
+                <cite>
+                    Photo by 
+                    <a href="https://unsplash.com/@xteemu?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
+                        Teemu Paananen
+                    </a> on 
+                    <a href="https://unsplash.com/s/photos/plant-identification?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
+                        Unsplash
+                    </a>
+                </cite>
 
-    &lt;/script>        </pre>
-    
-        <p>
-            Of the links that are in the "Account" drop down menu, the first one 
-            works (click on it) -- it invokes a content generating function 
-            (registerContent), similar to homeContent and blogContent. 
-            The other links in the "Account" menu are non-working links. 
-            To have the NavRouter include a non-working link,  
-            just omit the linkURL and action properties (as demonstrated 
-            in the "Log In" ... "Profile" links above).
-        </p>
-        <p>
-            You can also have the NavRouter include a "regular link" (e.g., that opens 
-            a new web page, instead of injecting the results of a content generating function 
-            into the content area). To do this, 
-            just have the action attribute be a string (e.g., the name of an HTML 
-            file or pdf) that should be opened up in a new tab when the user 
-            clicks on that link. You can see 4 examples of this (links that 
-            open up a HTML page or PDF in a new tab) in the "Tutorial"
-            drop down menu specified below.
-        </p>
-    
-        <pre>
-        var myNavList = [
 
-            // action attribute is a function name - no quotes around home.
-            {linkText: "Home", linkURL: "#/home", action: home},  // a regular "link"
-    
-            //...
-            {
-                header: "Tutorial",
-                subMenu: [
-                    {linkText: "Proposal", linkURL: "#/proposal", action: "tutorial/proposal.pdf"},
-                    {linkText: "Proof Of Concept", linkURL: "#/tutPOC", action: "tutorial/poc.html"},
-                    {linkText: "Demo", linkURL: "#/tutDemo", action: "tutorial/download/demo.html"},
-                    {linkText: "Tutorial Home", linkURL: "#/tutHome", action: "tutorial/index.html"}
-                ]
-            },
-           
-            // ...
-    
-            // action attribute is a function name - no quotes around blog.
-            {linkText: "Blog", linkURL: "#/blog", action: blog}
-        ]; </pre>
-    
-    <p>
-        To see all the code where it needs to be, just right click this page and View Source !
-    </p>
-    
+                <br>
+                &emsp; Any user will be able to log into their account after creating
+                one with their email address, password, and membership type. Once 
+                the user is logged in they will be able to add any plants they have 
+                found with the name, description, and image. This will be completed
+                using a separate web page. Additionally, the location (latitude and 
+                longitude) may be added to be more specific. After the plant 
+                identification has been added. All plants can be
+                browsed along with their details from another web page. This page
+                will list all plants with the users that have added the plants. 
+                There will also be functionality to edit and remove plants if
+                it is required by the user.</p>
+
+            <h3>Database Design</h3>
+
+            <p>&emsp;The database table (other) will be used to store the plant information 
+                that the user has entered. It will include the following details
+            <ul>
+                <li>Auto incrementing primary key - integer</li>
+                <li>The name of the plant - characters</li>
+                <li>The description of the plant - characters</li>
+                <li>The latitude/GPS coordinate the plant was found - decimal</li>
+                <li>The longitude/GPS coordinate the plant was found - decimal</li>
+                <li>The URL of the plants image - characters</li>
+                <li>The region the plant is in - character</li>
+                <li>The season of the year it was found - character</li>
+                <li>The foreign key for identifying the user that found it - integer</li>
+            </ul>
+            <p>
+
+            <h3>Web Development Experience</h3>
+
+            <p>&emsp;My web development experience is at a beginner level when
+                it comes to HTML, CSS, and JavaScript. I did take a short
+                online course many years ago and I still remember some of the
+                topics. Currently, I do have
+                slight experience using Java Spring Boot to create Restful APIs
+                with Hibernate to store data in MySQL databases. This should make
+                learning these new topics easier.
+                Also, I have completed a good amount of Android Mobile Applications
+                with XML and Kotlin, which I believe are slightly similar to HTML and
+                JavaScript but still different in many ways. I am also familiar with
+                how HTTP requests are handled on backend services. Overall, looking
+                forward to everything that will be taught in this course!</p>
+
+            <h3>Current Homework Reflection</h3>
+
+            <p>This week's homework was well explained and not too difficult
+                besides taking the time to experiment with different layouts and 
+                CSS attributes. The HTML portion of the assignment was fairly easy
+                but the CSS portion was slightly more difficult and took some time
+                to experiment with different designs. I choose an interesting
+                navigation bar at first that was along the bottom of the title bar
+                but realized after it was completed that it did not have enough
+                content. It also would need to collapse when in narrow view so I
+                have decided to wait to implement it at a later date once there is 
+                more content. This homework was valuable for learning and reviewing
+                responsive design that I have previously struggled with. It also
+                helped me learn more CSS attributes that I have never used.</p>
+
     
     `;
         var ele = document.createElement("div");
