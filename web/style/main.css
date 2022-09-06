@@ -8,11 +8,10 @@
 body { 
     margin:0;                   /* no white border around browser window */
     font-family: sans-serif;    /* no tails on the font like Times New Roman */
-    background-color: #eeeeee;  /* light grey - will show through the content area */
+    background-color: #5ebb80;  /* light green - edited from original*/
 }
 
 #titleNav {
-
     position: fixed; 
     top:0rem;
     left:0rem;
@@ -23,13 +22,14 @@ body {
     flex-direction: column; 
 
     padding: 0.5rem;
-    background-color: #74A5FD;
+    background-color: #1c301d;
 
     /* give a little "3D"  effect to the edges of titleNav and footer */
     box-shadow: 0px 0px 5px black;  
 }
 
 #title {
+    color: #c4d77d;
     font-size: 2.5rem;
     font-weight: bold;
     letter-spacing: 0.2rem; /* spaces out letters a bit */
@@ -54,8 +54,18 @@ body {
     padding-top:7rem; /* make sure fixed titleNav does not cover up any content in mobile */
 }
 
+#content img, cite { /* To keep image in center of screen when narrow */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    height: auto;
+    font-size: 0.7rem;
+}
+
 #footer {
-    background-color:   #CCDDEE; 
+    background-color:#3c241c;
+    color: #c3d781; 
 
     /* give a little "3D"  effect to the edges of titleNav and footer */
     box-shadow: 0px 0px 5px #888888;  
@@ -109,5 +119,13 @@ p + ul {
         /* flex attributes */
         flex-direction: row;
         justify-content: space-between; /* flex attribute will push title left and nav right, with "space between" */
+    }
+    
+        #content img, cite {
+        float: left;
+        margin: 5px;
+        width: 50%;
+        padding-right: 2rem;
+        height: auto;
     }
 }
