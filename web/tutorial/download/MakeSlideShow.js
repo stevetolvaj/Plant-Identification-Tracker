@@ -1,4 +1,4 @@
-function MakeSlideShow (picList, style) {
+function MakeSlideShow(picList, style) {
 
     var slideShow = document.createElement("div");
     slideShow.classList.add(style);
@@ -32,7 +32,7 @@ function MakeSlideShow (picList, style) {
     // Advance to next image in the picture list
     function nextPic() {
 
-        if (picNum < picList.length-1) {
+        if (picNum < picList.length - 1) {
             picNum++;
         }
         setPic();
