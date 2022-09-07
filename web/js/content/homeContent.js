@@ -22,10 +22,10 @@ var content = `
                 Another option will be to join as a premium member. This will allow
                 you to update and identify plants from others if they are incorrect.
                 There will be a small membership fee to use this application.<br></p>
-
+                <figure>
                 <img src="pics/fern.jpg" alt="Green fern">
 
-                <cite>
+                <figcaption>
                     Photo by 
                     <a href="https://unsplash.com/@xteemu?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
                         Teemu Paananen
@@ -33,8 +33,8 @@ var content = `
                     <a href="https://unsplash.com/s/photos/plant-identification?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
                         Unsplash
                     </a>
-                </cite>
-
+                </figcaption>
+                </figure>
                 <p>&emsp; Any user will be able to log into their account after creating
                 one with their email address, password, and membership type. Once 
                 the user is logged in they will be able to add any plants they have 
