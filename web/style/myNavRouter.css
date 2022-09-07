@@ -4,13 +4,27 @@
 */
 
 .NavRouter { 
-    color: #c4d77d;
+    color: #c4d77d;   
 }
 
 .NavRouter a { 
     color: #c4d77d;
+
+}
+
+.NavRouter a:hover {
+    color: white;
+}
+
+.NavRouter .NavGroup .MenuHeader:hover {
+    color: white;
 }
 
 .NavRouter .SubMenu a { 
-   color: #3c241c;
+    color: #3c241c;
+}
+
+.NavRouter .SubMenu {
+    background-color: #81f2c1;
+    border: solid black thin;
 }

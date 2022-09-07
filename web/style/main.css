@@ -36,11 +36,16 @@ body {
     white-space: nowrap;  /* don't allow the title to wrap */
 }
 
+#title img {
+    width: 2.5rem;
+    height: auto;
+}
+
 #nav {
     font-size: 1rem;
     font-weight: bold;
     text-align:right;
-    padding-top: 1rem;
+    padding-top: 1.2rem;
     padding-right: 1rem;
     white-space: nowrap;  /* don't allow nav links to wrap */
 }
@@ -104,11 +109,11 @@ pre {
 
 /* when a ul is right after a p, make the ul have a negative top margin.*/
 p + ul { 
-   margin-top:-1rem;
+    margin-top:-1rem;
 }
 
 /* desktop only */
-@media only screen and (min-width: 40rem) { 
+@media only screen and (min-width: 50rem) { /* Changed to 49 rem to allow nav headers from being cut off.
 
     /* in desktop the titleNav is not as tall, so less top margin needed to prevent titleNav from hiding top of for content */
     #content {
@@ -116,12 +121,11 @@ p + ul {
     }
 
     #titleNav {
-        /* flex attributes */
         flex-direction: row;
-        justify-content: space-between; /* flex attribute will push title left and nav right, with "space between" */
+        justify-content: space-between;
     }
-    
-        #content img, cite {
+
+    #content img, cite {
         float: left;
         margin: 5px;
         width: 50%;
