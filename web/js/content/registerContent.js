@@ -1,5 +1,5 @@
 function registerContent() {
-
+    "use strict";
     // ` this is a "back tick". Use it to define multi-line strings in JavaScript.
     var content = ` 
       <h4>Registration Page -- Coming Soon</h4>

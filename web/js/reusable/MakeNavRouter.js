@@ -1,5 +1,5 @@
 function MakeNavRouter(params) {
-
+    "use strict";
 
     // ******************************************************************************
     // Start Building the Navigation Bar... 
