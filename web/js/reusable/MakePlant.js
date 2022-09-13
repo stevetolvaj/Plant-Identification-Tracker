@@ -12,8 +12,10 @@
  * @returns {Element|plant} The div HTML with class of .plant that has the data relating to 
  * the plant that was created.
  */
+
+"use strict";
+
 function MakePlant(params) {
-    "use strict";
     
     if (!params) {
         throw "Error: Missing arguments passed to MakePlant function!";
@@ -22,12 +24,40 @@ function MakePlant(params) {
     var plant = document.createElement("div");
     plant.classList.add("plant");
     
-    plant.desc = params.desc | "Add a description for the plant specimen.";
+
+    var name = params.name || "Add a name to this plant specimen.";
+   
+    plant.desc = params.desc || "Add a description for the plant specimen.";
     
+    plant.setName = function(newName) {
+        name = newName;
+        display();
+    };
     
-    var name = params.name | "Add a name to this plant specimen.";
+    plant.setDesc = function(newDesc) {
+        plant.desc = newDesc;
+        display();
+    };
     
+    var plantInfo = document.createElement("div");
+    plantInfo.setAttribute("id", "details");
+    plant.appendChild(plantInfo);
     
+    var display = function () {
+//        plantInfo.innerHTML = "<p>Plant name: " + name + "<br/>" + 
+//                "Plant description: " + plant.desc + "</p><br/>";
+
+        // Putting image first then inserting the html before end of plantInfo div.
+        var plantImg = document.createElement("img");
+        plantImg.src = params.image || "pics/potted_plant_100px.png";
+        plantInfo.appendChild(plantImg);
+        
+        plantInfo.insertAdjacentHTML("beforeend", "<p><strong>Plant name:</strong> " + name + "<br/>" + 
+                "<strong>Plant description:</strong> " + plant.desc + "</p><br/>");
+
+    };
+    
+    display();
     
     return plant;
 }

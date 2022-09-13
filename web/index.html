@@ -42,11 +42,13 @@
 
         <!-- Suggest you keep these in the same order as you see them in the NB project pane --> 
         <script src="js/reusable/MakeNavRouter.js"></script>
+        <script src="js/reusable/MakePlant.js"></script>
 
         <script src="js/content/blogContent.js"></script>
         <script src="js/content/homeContent.js"></script>
         <script src="js/content/registerContent.js"></script>
         <script src="js/content/infoContent.js"></script>
+        <script src="js/content/plantContent.js"></script>
 
         <script>
             "use strict";
@@ -71,7 +73,7 @@
                 {
                     header: "Search",
                     subMenu: [
-                        {linkText: "Make Objects"},
+                        {linkText: "Make Plants", linkURL: "#/makePlants", action: plantContent},
                         {linkText: "Slide Show"},
                         {linkText: "Click Sort"}
                     ]
