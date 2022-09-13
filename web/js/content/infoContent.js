@@ -1,5 +1,6 @@
+"use strict";
+
 function infoContent() {
-    "use strict";
     
     var content = `
     <h4>Information</h4>
