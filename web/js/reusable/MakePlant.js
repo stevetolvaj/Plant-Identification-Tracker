@@ -13,8 +13,10 @@
  * the plant that was created.
  */
 function MakePlant(params) {
+    "use strict";
+    
     if (!params) {
-        throw("Error: Missing arguments passed to MakePlant function!");
+        throw "Error: Missing arguments passed to MakePlant function!";
     }
     
     var plant = document.createElement("div");
