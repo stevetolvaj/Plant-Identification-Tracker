@@ -29,33 +29,79 @@ function MakePlant(params) {
    
     plant.desc = params.desc || "Add a description for the plant specimen.";
     
+    /**
+     * Public setter, sets name of the plant div and updates display.
+     * 
+     * @param {String} newName The new name for the plant.
+     */
     plant.setName = function(newName) {
         name = newName;
         display();
     };
     
+    /**
+     * Private setter, sets the description of the plant div and updates display.
+     * @param {String} newDesc The new description of the plant.
+     */
     plant.setDesc = function(newDesc) {
         plant.desc = newDesc;
         display();
     };
     
+    
+    // div with id plantDetails for displaying the plant information.
     var plantInfo = document.createElement("div");
-    plantInfo.setAttribute("id", "details");
+    plantInfo.setAttribute("id", "plantInfo");
     plant.appendChild(plantInfo);
     
+    /**
+     * Used to update the info portion of the plant div with picture, name, and
+     * description.
+     */
     var display = function () {
-//        plantInfo.innerHTML = "<p>Plant name: " + name + "<br/>" + 
-//                "Plant description: " + plant.desc + "</p><br/>";
-
-        // Putting image first then inserting the html before end of plantInfo div.
-        var plantImg = document.createElement("img");
-        plantImg.src = params.image || "pics/potted_plant_100px.png";
-        plantInfo.appendChild(plantImg);
         
-        plantInfo.insertAdjacentHTML("beforeend", "<p><strong>Plant name:</strong> " + name + "<br/>" + 
-                "<strong>Plant description:</strong> " + plant.desc + "</p><br/>");
-
+        var imageURL = params.image || "pics/potted_plant_100px.png";
+        
+        // Create string for image.
+        var image = "<img alt=\"Plant Picture\" src=\""+ imageURL + "\"";
+        
+        // Added image in first for easier styling.
+        var str = image + "<p><strong>Plant name:</strong> " + name + "<br/>" + 
+                "<strong>Plant description:</strong> " + plant.desc + "</p><br/>";
+        
+        plantInfo.innerHTML = str;
     };
+    
+    // div with id plant input for user input.
+    var plantInput = document.createElement("div");
+    plantInput.setAttribute("id", "plantInput");
+    plant.appendChild(plantInput);
+    
+    var nameButton = document.createElement("button");
+    nameButton.innerHTML = "Change plant name to:";
+    plantInput.appendChild(nameButton);
+    
+    var newNameInput = document.createElement("input");
+    plantInput.appendChild(newNameInput);
+    
+    nameButton.onclick = function() {
+        plant.setName(newNameInput.value);
+    };
+    
+    plantInput.appendChild(document.createElement("br"));
+    
+    // Title change
+    var descButton = document.createElement("button");
+    descButton.innerHTML = "Change plant description to:";
+    plantInput.appendChild(descButton);
+    
+    var newTitleInput = document.createElement("textarea");
+    plantInput.appendChild(newTitleInput);
+    
+    descButton.onclick = function() {
+       plant.setDesc(newTitleInput.value);
+    };
+    
     
     display();
     
