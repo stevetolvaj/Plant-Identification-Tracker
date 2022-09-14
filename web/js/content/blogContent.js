@@ -1,8 +1,7 @@
 "use strict";
-
-function blogContent() {
+        function blogContent() {
 // ` this is a "back tick". Use it to define multi-line strings in JavaScript.
-var content = ` 
+        var content = ` 
       <h2>My Blog</h2>
       <h3>Database Design</h3>
 
@@ -63,9 +62,22 @@ var content = `
                 a great way to introduce and learn JavaScript. It also allowed 
                 some time to improve the styling of my web site.
             </p>
+    
+            <h3>JS Objects Homework Reflection</h3>
+            
+            <p> &emsp; This weeks homework was more of a medium level of difficulty
+                for me. This was because of having some small issues with styling.
+                When I was setting the styling for the new objects page it took me
+                a while to realize the image styling was being overriden by the original
+                content div id. I did find a solution by adding the important tag
+                to the width of the image within the new objects selector. Other
+                than that it was fairly easy and very interesting to learn about
+                how to modify DOM elements from JavaScript. I enjoyed this homework
+                overall and look forward to learning more!
+            </p>
 
     `;
-        var ele = document.createElement("div");
-        ele.innerHTML = content;
-        return ele;
+                var ele = document.createElement("div");
+                ele.innerHTML = content;
+                return ele;
         }

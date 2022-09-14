@@ -6,7 +6,7 @@ function homeContent () {
 // NetBeans menu option "Source - Format" will not work with the text inside of a 
 // String, so you have to do this indentation manually with the editor. 
 
-var content = `
+        var content = `
 
        <h3>Functionality and Purpose</h3>
 
@@ -59,7 +59,7 @@ var content = `
                 up to date. Please feel free to join and start identifying!</p>
 
     `;
-        var ele = document.createElement("div");
-        ele.innerHTML = content;
-        return ele;
-}
+                var ele = document.createElement("div");
+                ele.innerHTML = content;
+                return ele;
+        }

@@ -1,7 +1,7 @@
 "use strict";
 
 function infoContent() {
-    
+
     var content = `
     <h4>Information</h4>
     <h5> I added this info content link in as an extra just to have another link.</h5>
