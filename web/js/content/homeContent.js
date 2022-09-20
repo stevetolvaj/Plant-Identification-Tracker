@@ -52,9 +52,9 @@ function homeContent () {
                 <p>&emsp; The goal of this application is to allow people to add
                 various plant species identification along with the location to
                 more easily identify different species. It can be difficult to
-                identify plants from a book or other databases when locations
-                of the plants are not easily accesses. It can also be benificial
-                to allow editing of others identifications to update names/descriptions
+                identify plants from a book or other databases when the locations
+                of the plants are not easily accessed. It can also be beneficial
+                to allow editing of other's identifications to update names/descriptions
                 if they are incorrect. This will decrease errors and keep the data
                 up to date. Please feel free to join and start identifying!</p>
 

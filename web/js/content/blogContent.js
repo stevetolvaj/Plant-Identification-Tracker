@@ -52,28 +52,49 @@
     
             <h3>JS UI Homework Reflection</h3>
             
-            <p> &emsp; The weeks homework showed a very interesting way to learn
-                about producer and consumer style code. It proves to be very
+            <p> &emsp; The week's homework showed a very interesting way to learn
+                about producer and consumer-style code. It proves to be a very
                 reliable and reusable code. The only hard part of the homework
                 for me was analyzing the provided code to understand how it works.
                 Once that step was complete the rest of the homework was fairly
                 easy. I did find that learning about overriding style sheets was
                 valuable if you are using provider code samples. Overall, it was
                 a great way to introduce and learn JavaScript. It also allowed 
-                some time to improve the styling of my web site.
+                some time to improve the styling of my website.
             </p>
     
             <h3>JS Objects Homework Reflection</h3>
             
-            <p> &emsp; This weeks homework was more of a medium level of difficulty
-                for me. This was because of having some small issues with styling.
+            <p> &emsp; This week's homework was more of a medium level of difficulty
+                for me. This was because of some small issues with styling.
                 When I was setting the styling for the new objects page it took me
-                a while to realize the image styling was being overriden by the original
+                a while to realize the image styling was being overridden by the original
                 content div id. I did find a solution by adding the important tag
-                to the width of the image within the new objects selector. Other
+                to the width of the image within the new object selector. Other
                 than that it was fairly easy and very interesting to learn about
                 how to modify DOM elements from JavaScript. I enjoyed this homework
                 overall and look forward to learning more!
+            </p>
+            
+            <h3>Database</h3>
+            
+            <p> &emsp; I have had some experience with databases from a previous
+                database management class. It has been a while since I have worked
+                with MySQL directly since I usually use frameworks that automatically
+                populate tables. So far the topics are not new to me but definitely 
+                a good refresher since I do not remember them. Previously I have
+                used MySQL workbench for local and remote databases on AWS RDBS
+                and have also written SQL scripts using Java JDBC connector.
+                The only other database work I have done was Spring with Hibernate
+                where it really did not require any MySQL scripts.<br/>
+                &emsp; The homework was fairly easy due to my previous experience
+                but still had to relearn some MySQL keywords. I also learned that 
+                if you use the table editor on MySQL workbench and try to insert
+                null into non-character fields it will change the field to zeros.
+                I realized that if I wanted the field to be truly null I would have to 
+                run a script that specified it to be null. This homework was a 
+                good way to figure out new things and the link to it can be found
+                <a target="blank" href="pics/tolvaj_steve_database_HW.pdf">here</a>.
             </p>
 
     `;
