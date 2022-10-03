@@ -50,6 +50,8 @@
         <script src="js/content/registerContent.js"></script>
         <script src="js/content/infoContent.js"></script>
         <script src="js/content/plantContent.js"></script>
+        <script src="webAPIs/listUsers.jsp"></script>
+
 
         <script>
             "use strict";
@@ -75,6 +77,8 @@
                     header: "Search",
                     subMenu: [
                         {linkText: "My Objects", linkURL: "#/myObjects", action: plantContent},
+                        {linkText: "Users API", linkURL: "#/usersAPI", action: "webAPIs/listUsersAPI.jsp"},
+                        {linkText: "Plants API", linkURL: "#/plantsAPI", action: "webAPIs/listPlantsAPI.jsp"},
                         {linkText: "Slide Show"},
                         {linkText: "Click Sort"}
                     ]

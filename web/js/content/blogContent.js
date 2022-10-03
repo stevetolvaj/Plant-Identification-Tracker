@@ -94,7 +94,28 @@
                 I realized that if I wanted the field to be truly null I would have to 
                 run a script that specified it to be null. This homework was a 
                 good way to figure out new things and the link to it can be found
-                <a target="blank" href="pics/tolvaj_steve_database_HW.pdf">here</a>.
+                <a target="blank" href="./docs/tolvaj_steve_database_HW.pdf">here</a>.
+            </p>
+            
+            <h3>Web API</h3>
+            
+            <p> &emsp; My previous server-side database access code included using
+                JPA, Hibernate, and JDBC at a beginner level before. I have never
+                linked it to a front-end program before. My experience with it was
+                 more of an abstract way to work with database access code.
+                This was a great way to learn how to learn database access 
+                at a lower level and get a better understanding of how it works.
+                I also learned how to generate better user-friendly error messages
+                instead of just having one generalized error message. This homework
+                showed how it is better to have various error messages at different 
+                levels of the program to provide better debugging. Also to have a 
+                user-friendly error message, which I have never thought of other
+                than a few alerts to display here and there. I have also never 
+                imported the drivers manually and it was a good way to learn while
+                using NetBeans. I usually use different IDEs where I can just click
+                add dependancys. It is useful to know how to do this manually when 
+                needed. The error message document can be found 
+                <a target="blank" href="./docs/Tolvaj_webAPI_HW5.pdf">here</a>. 
             </p>
 
     `;
