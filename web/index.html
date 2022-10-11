@@ -14,9 +14,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="icons/plant.png" />  
 
+        
         <link href="style/main.css" rel="stylesheet" type="text/css" />  
         <link href="style/NavRouter.css" rel="stylesheet" type="text/css" />  
         <link href="style/myNavRouter.css" rel="stylesheet" type="text/css" />  
+        <link href="style/clicksort.css" rel="stylesheet" type="text/css" /> 
         <!-- Removed CSS below and moved some styles into main.css -->
         <!--        <link href="style/homepage.css" rel="stylesheet" type="text/css" />  -->
         <link href="style/plant.css" rel="stylesheet" type="text/css"/>
@@ -44,19 +46,24 @@
         <!-- Suggest you keep these in the same order as you see them in the NB project pane --> 
         <script src="js/reusable/MakeNavRouter.js"></script>
         <script src="js/reusable/MakePlant.js"></script>
+        <script src="js/reusable/MakeClickSortTable.js"></script>
+        <script src="js/reusable/SortableTableUtils.js"></script>
+        <script src="js/reusable/ajax.js"></script>
+
+
 
         <script src="js/content/blogContent.js"></script>
         <script src="js/content/homeContent.js"></script>
         <script src="js/content/registerContent.js"></script>
         <script src="js/content/infoContent.js"></script>
         <script src="js/content/plantContent.js"></script>
-        <script src="webAPIs/listUsers.jsp"></script>
-
+        <script src="js/content/plantTableContent.js"></script>
+        <script src="js/content/userTableContent.js"></script>
 
         <script>
             "use strict";
             // Home | Account | Search | Tutorial | Blog
-
+           
             var myNavList = [
 
                 // action attribute is a function name - no quotes aroudnd home.
@@ -79,8 +86,8 @@
                         {linkText: "My Objects", linkURL: "#/myObjects", action: plantContent},
                         {linkText: "Users API", linkURL: "#/usersAPI", action: "webAPIs/listUsersAPI.jsp"},
                         {linkText: "Plants API", linkURL: "#/plantsAPI", action: "webAPIs/listPlantsAPI.jsp"},
-                        {linkText: "Users", linkURL: "#/userClickSort", action: "webAPIs/listPlantsAPI.jsp"}, 
-                        {linkText: "Plants", linkURL: "#/plantClickSort", action: "webAPIs/listPlantsAPI.jsp"}
+                        {linkText: "Users", linkURL: "#/userClickSort", action: userTableContent}, 
+                        {linkText: "Plants", linkURL: "#/plantClickSort", action: plantTableContent}
 
 //                        {linkText: "Slide Show"},
 //                        {linkText: "Click Sort"}
