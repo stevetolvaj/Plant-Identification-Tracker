@@ -11,6 +11,9 @@
  */
 function MakeClickSortTable(title, objList, sortOrderPropName, sortIcon) {
 
+    var ascending = true;
+    var rotationAngle = 0;
+
     /**
      * The jsSort function will sort the list based on the property
      * @param {object[]} objList The list of objects to sort
@@ -23,7 +26,7 @@ function MakeClickSortTable(title, objList, sortOrderPropName, sortIcon) {
             var message = "List cannot be sorted. Not enough objects to sort through.";
             console.log(message);
             alert(message);
-            return; 
+            return;
         }
 
         var obj = objList[0];
@@ -31,7 +34,7 @@ function MakeClickSortTable(title, objList, sortOrderPropName, sortIcon) {
             var message = "The list does not have the property " + byProperty + " to sort by.";
             console.log(message);
             alert(message);
-            return;  
+            return;
         }
 
         if (!obj[byProperty].sortOrder || obj[byProperty].sortOrder === null) {
@@ -42,13 +45,11 @@ function MakeClickSortTable(title, objList, sortOrderPropName, sortIcon) {
             return;  // early return -- dont try to sort.
         }
 
-        // q and z are just elements in the array and the funcction has to return negative or positive or zero 
-        // depending on the comparison of q and z.
-        // using JS associative array notation (property name char string used inside square brackets 
-        // as it if was an index value). 
 
-        objList.sort(function (q, z) {  // in line (and anonymous) def'n of fn to compare list elements. 
-            // the function you create is supposed to return positive (if first bigger), 0 if equal, negative otherwise.
+        /**
+         * The objList sort funtion will be used as a helper function for sorting.
+         */
+        objList.sort(function (q, z) {
 
             // using JS associative array notation, extract the 'byProperty' property from the two
             // list elements so you can compare them.
@@ -56,6 +57,16 @@ function MakeClickSortTable(title, objList, sortOrderPropName, sortIcon) {
             var zVal = z[byProperty].sortOrder;
 
 
+            if (!ascending) {
+                var c = 0;
+                if (qVal > zVal) {
+                    c = -1;
+                } else if (qVal < zVal) {
+                    c = 1;
+                }
+                console.log("comparing " + qVal + " to " + zVal + " is " + c);
+                return c;
+            }
             var c = 0;
             if (qVal > zVal) {
                 c = 1;
@@ -66,13 +77,17 @@ function MakeClickSortTable(title, objList, sortOrderPropName, sortIcon) {
             return c;
         });
 
-    } // jsSort
+    }
 
-
-    // remove the tbody from 'table' (if there is one). 
-    // sort 'list' by 'sortOrderPropName'. 
-    // add a new tbody to table, inserting rows from the sorted list.
-    function addTableBody(table, list, sortOrderPropName) {
+    /**
+     * 
+     * @param {type} table The table to insert the body in
+     * @param {type} list The list to populate the body
+     * @param {type} sortOrderPropName The header name to sort the list by
+     * @param {type} filterValue The filter value from the input box
+     * @returns {undefined}
+     */
+    function addTableBody(table, list, sortOrderPropName, filterValue) {
 
         // remove old tbody element if there is one (else you'll get the new sorted rows 
         // added to end of what's there).
@@ -84,9 +99,6 @@ function MakeClickSortTable(title, objList, sortOrderPropName, sortIcon) {
 
         jsSort(list, sortOrderPropName);
 
-        // Add one row (to HTML table) per element in the array.
-        // Each array element has a list of properties that will become 
-        // td elements (Table Data, a cell) in the HTML table. 
         var tableBody = document.createElement("tbody");
         table.appendChild(tableBody);
 
@@ -94,20 +106,19 @@ function MakeClickSortTable(title, objList, sortOrderPropName, sortIcon) {
         // To each row, add a td element (Table Data, a cell) that holds the object's 
         // property values. 
         for (var i in objList) {
-            var tableRow = document.createElement("tr");
-            tableBody.appendChild(tableRow);
 
-            // create one table data <td> content matching the property name
-            var obj = objList[i];
-            for (var prop in obj) {
+            // Filter value is checked here
+            if (isToShow(objList[i], filterValue)) {
+                var tableRow = document.createElement("tr");
+                tableBody.appendChild(tableRow);
 
-                // **** THE ONLY CHANGE IS HERE ****
-                // obj[prop] should already hold a "td" tag
-                tableRow.appendChild(obj[prop]);
-                // **** END OF THE CHANGE       ****
+                // create one table data <td> content matching the property name
+                var obj = objList[i];
+                for (var prop in obj) {
+                    tableRow.appendChild(obj[prop]);
+                }
             }
         }
-
     } // addTableBody
 
     function makeHeader(propName, sortIcon) {
@@ -116,30 +127,47 @@ function MakeClickSortTable(title, objList, sortOrderPropName, sortIcon) {
 
         var headingText = propName.replace("_", " ");
 
-        // if the first character of a property name starts with underscore then we assume that 
-        // column should not be click sortable (maybe it is an image column). 
+        var img = document.createElement('img');
+        img.src = sortIcon;
+
+        headingCell.innerHTML = headingText;
+
+        // Underscore used as spaces for header titles.
         if (propName[0] !== "_") {
-            headingText = headingText + "<img src='" + sortIcon + "'/> ";
+
             headingCell.onclick = function () {
-                console.log("WILL SORT ON " + propName);
+                ascending = !ascending;
+                rotationAngle += 180;
+                if (rotationAngle === 360) {
+                    rotationAngle = 0;
+                }
+                console.log("WILL SORT ON " + propName + "and down arrow is: " + ascending);
+                img.style.transform = `rotate(${rotationAngle}deg)`;
                 addTableBody(newTable, objList, propName);
             };
+            headingCell.appendChild(img);
         }
-        headingCell.innerHTML = headingText;
+
+
         return headingCell;
     } // end makeHeader
-
-
-    // **** ENTRY POINT ****
 
     // Create a container to hold the title (heading) and the HTML table
     var container = document.createElement("div");
     container.classList.add("clickSort");
 
     // Add a heading (for the title) and add that to the container
-    var heading = document.createElement("h3");
+    var heading = document.createElement("h2");
     heading.innerHTML = title;
     container.appendChild(heading);
+
+    //************************************** Filter input *********************
+    var searchDiv = document.createElement("div");
+    container.appendChild(searchDiv);
+    searchDiv.innerHTML = "Filter by: ";
+    // Create a filter text box for user input and append it.
+    var searchInput = document.createElement("input");
+    searchDiv.appendChild(searchInput);
 
     // Create a new HTML table tag (DOM object) and add that to the container.
     var newTable = document.createElement("table");
@@ -159,6 +187,45 @@ function MakeClickSortTable(title, objList, sortOrderPropName, sortIcon) {
     // populated with data from the sorted objList.
     addTableBody(newTable, objList, sortOrderPropName);
 
+
+    // Input box filter changes make table body update with search input value
+    searchInput.onkeyup = function () {
+        console.log("search filter changed to " + searchInput.value);
+        addTableBody(newTable, objList, sortOrderPropName, searchInput.value);
+    };
+
+    // Return true if any property of obj contains searchKey. Otherwise, return false.
+    function isToShow(obj, searchKey) {
+
+        // show the object if searchKey is empty
+        if (!searchKey || searchKey.length === 0) {
+            return true;
+        }
+
+        // convert search key to upper case (will convert values also to upper case before comparing).
+        var searchKeyUpper = searchKey.toUpperCase();
+
+        for (var prop in obj) {
+
+            // Do not try to find a match for Table cells that hold images. 
+            if (prop[0] !== "_") {
+
+                // pull out the innerHTML because all properties of obj are actually <td> tags, not just text.
+                var propVal = obj[prop].innerHTML; // associative array, using property name as if index. 
+                var propValUpper = propVal.toUpperCase(); // convert to upper case to match searchKey.
+
+                console.log("checking if " + searchKeyUpper + " is in " + propValUpper);
+
+                if (propValUpper.includes(searchKeyUpper)) {
+                    console.log("Yes it is inside");
+                    return true;
+                }
+            } // excluding image tds
+        }
+        console.log("no it is not inside");
+        return false;
+    } // isToShow 
+
     return container;
 
-}  // MakeTableBetter
+}  

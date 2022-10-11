@@ -3,7 +3,6 @@
 function userTableContent() {
     var myDiv = document.createElement("div");
 
-  // REPLACE THIS funList assignment statement with an AJAX call to file json/water.json
   ajax("./webAPIs/listUsersAPI.jsp", processUserData, myDiv);
 
   function processUserData(usersList) {
@@ -16,11 +15,11 @@ function userTableContent() {
     
     let users = usersList.webUserList;
 
-            var newUsersList = []; // empty array
+            var newUsersList = [];
             
             for (var i = 0; i < users.length; i++) {
-                newUsersList[i] = {}; // i-th element of array is empty object.
-                newUsersList[i].UserID = SortableTableUtils.makeNumber(users[i].webUserId);
+                newUsersList[i] = {}; 
+                newUsersList[i].User_ID = SortableTableUtils.makeNumber(users[i].webUserId);
                 newUsersList[i].Email = SortableTableUtils.makeText(users[i].userEmail),
                 newUsersList[i]._Image = SortableTableUtils.makeImage(users[i].image, "10rem");
                 newUsersList[i].DOB = SortableTableUtils.makeDate(users[i].birthday);
@@ -29,13 +28,11 @@ function userTableContent() {
             }
 
                function inject(ele, where) {
-                where.innerHTML = ""; // blank out content area before appending
+                where.innerHTML = ""; 
                 where.appendChild(ele);
             }
 
-            // document.getElementById("listHere").appendChild(MakeSortableTable(carList, "condition"));
-
-            inject(MakeClickSortTable("Registered Users List", newUsersList, "UserID", "icons/down.png"), myDiv);
+            inject(MakeClickSortTable("Registered Users List", newUsersList, "User_ID", "icons/down.png"), myDiv);
   }
 
   return myDiv;

@@ -25,7 +25,7 @@ SortableTableUtils.makeText = function (text) {
 };
 
 SortableTableUtils.makeNumber = function (num, isFormatCurrency) {
-    console.log("XXXXXXXXXXXXXXXXXXXXXXXXX");
+  
     var tableData = document.createElement('td');
 
     if (!num) { // empty data

@@ -20,6 +20,7 @@ and open the template in the editor.
 }
 
 .clickSort td {  /* applies to any <td> tag in any element classed "clickSort" */
+    padding: 0.25rem;
     background-color: #79e19a;
     font-size:1rem;
     border: #3b241c solid 2px;

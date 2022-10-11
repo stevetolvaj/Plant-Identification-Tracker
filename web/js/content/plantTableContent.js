@@ -4,7 +4,6 @@
 function plantTableContent() {
   var myDiv = document.createElement("div");
 
-  // REPLACE THIS funList assignment statement with an AJAX call to file json/water.json
   ajax("./webAPIs/listPlantsAPI.jsp", processPlantData, myDiv);
 
   function processPlantData(plantsList) {
@@ -17,26 +16,25 @@ function plantTableContent() {
     
     let plants = plantsList.plantList;
 
-            var newPlantList = []; // empty array
+            var newPlantList = []; 
             
             for (var i = 0; i < plants.length; i++) {
-                newPlantList[i] = {}; // i-th element of array is empty object.
-                newPlantList[i].PlantID = SortableTableUtils.makeNumber(plants[i].plantId);
-                newPlantList[i].PlantName = SortableTableUtils.makeText(plants[i].plantName),
+                newPlantList[i] = {};
+                newPlantList[i].Plant_ID = SortableTableUtils.makeNumber(plants[i].plantId);
+                newPlantList[i].Plant_Name = SortableTableUtils.makeText(plants[i].plantName),
                 newPlantList[i]._Image = SortableTableUtils.makeImage(plants[i].plantImage, "10rem");
                 newPlantList[i].Region = SortableTableUtils.makeText(plants[i].plantRegion);
-                newPlantList[i].UserEmail = SortableTableUtils.makeText(plants[i].webUserEmail);
+                newPlantList[i].User_Email = SortableTableUtils.makeText(plants[i].webUserEmail);
 
             }
 
                function inject(ele, where) {
-                where.innerHTML = ""; // blank out content area before appending
+                where.innerHTML = "";
                 where.appendChild(ele);
             }
 
-            // document.getElementById("listHere").appendChild(MakeSortableTable(carList, "condition"));
 
-            inject(MakeClickSortTable("Plants Identified by Users", newPlantList, "PlantID", "icons/down.png"), myDiv);
+            inject(MakeClickSortTable("Plants Identified by Users", newPlantList, "Plant_ID", "icons/down.png"), myDiv);
   }
 
   return myDiv;
