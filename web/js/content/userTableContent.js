@@ -10,7 +10,7 @@ function userTableContent() {
     console.log(usersList);
     
     if (usersList.dbError) {
-        alert("error getting plants from database");
+        alert("error getting users from database");
     }
     
     let users = usersList.webUserList;
@@ -31,6 +31,7 @@ function userTableContent() {
                 where.innerHTML = ""; 
                 where.appendChild(ele);
             }
+
 
             inject(MakeClickSortTable("Registered Users List", newUsersList, "User_ID", "icons/down.png"), myDiv);
   }

@@ -117,6 +117,25 @@
                 needed. The error message document can be found 
                 <a target="blank" href="./docs/Tolvaj_webAPI_HW5.pdf">here</a>. 
             </p>
+            <h3>Clicksort</h3>
+            
+            <p> &emsp; The progress made for this week was implementing a table
+                to show the registered users along with their data(found under search
+                and click on users). The other table shows the plants and the user's
+                email that identified the plant(found under search and click on plants).
+                The table includes sorting ascending and descending when the header column
+                names are clicked. The arrow showing the order is also animated to show 
+                the updated sort order. Another feature of these tables is the search filter
+                function. The table entries are filtered based on the characters in the 
+                search filter entry.<br/>
+                &emsp; It was fairly easy to implement the reusable table component
+                but a little more difficult to get the arrow direction and search filter
+                function to work. After reading through the code a few times it became easier
+                to understand how to implement the search filter function. I found it very
+                interesting to learn about how to rotate images using JavaScript for showing
+                ascending and descending order on the table header names.
+                
+            </p>
 
     `;
                 var ele = document.createElement("div");
