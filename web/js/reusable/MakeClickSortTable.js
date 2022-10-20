@@ -1,15 +1,6 @@
 "use strict";
 
-
-/**
- * 
- * @param {string} title The title of the table.
- * @param {object []} objList The list of objects to display in the table
- * @param {string} sortOrderPropName The name of the prop that the list should be sorted by
- * @param {string} sortIcon The icon to be used when the column is sorted
- * @returns {Element|MakeClickSortTable.container} The container of the table
- */
-function MakeClickSortTable(title, objList, sortOrderPropName, sortIcon) {
+function MakeClickSortTable(params) {
 
     var ascending = true;
     var rotationAngle = 0;
@@ -105,15 +96,15 @@ function MakeClickSortTable(title, objList, sortOrderPropName, sortIcon) {
         // To the tbody, add one row (to HTML table) per object in the object list.
         // To each row, add a td element (Table Data, a cell) that holds the object's 
         // property values. 
-        for (var i in objList) {
+        for (var i in params.objList) {
 
             // Filter value is checked here
-            if (isToShow(objList[i], filterValue)) {
+            if (isToShow(params.objList[i], filterValue)) {
                 var tableRow = document.createElement("tr");
                 tableBody.appendChild(tableRow);
 
                 // create one table data <td> content matching the property name
-                var obj = objList[i];
+                var obj = params.objList[i];
                 for (var prop in obj) {
                     tableRow.appendChild(obj[prop]);
                 }
@@ -143,7 +134,7 @@ function MakeClickSortTable(title, objList, sortOrderPropName, sortIcon) {
                 }
                 console.log("WILL SORT ON " + propName + "and down arrow is: " + ascending);
                 img.style.transform = `rotate(${rotationAngle}deg)`;
-                addTableBody(newTable, objList, propName);
+                addTableBody(newTable, params.objList, propName);
             };
             headingCell.appendChild(img);
         }
@@ -158,7 +149,7 @@ function MakeClickSortTable(title, objList, sortOrderPropName, sortIcon) {
 
     // Add a heading (for the title) and add that to the container
     var heading = document.createElement("h2");
-    heading.innerHTML = title;
+    heading.innerHTML = params.title;
     container.appendChild(heading);
 
     //************************************** Filter input *********************
@@ -178,20 +169,20 @@ function MakeClickSortTable(title, objList, sortOrderPropName, sortIcon) {
     newTable.appendChild(headerRow);
 
     // ADD one column heading per property in the object list.
-    var obj = objList[0];
+    var obj = params.objList[0];
     for (var propName in obj) {
-        headerRow.appendChild(makeHeader(propName, sortIcon));
+        headerRow.appendChild(makeHeader(propName, params.sortIcon));
     }
 
     // After sorting objList by sortOrderPropName, create or replace the tbody 
     // populated with data from the sorted objList.
-    addTableBody(newTable, objList, sortOrderPropName);
+    addTableBody(newTable, params.objList, params.sortOrderPropName);
 
 
     // Input box filter changes make table body update with search input value
     searchInput.onkeyup = function () {
         console.log("search filter changed to " + searchInput.value);
-        addTableBody(newTable, objList, sortOrderPropName, searchInput.value);
+        addTableBody(newTable, params.objList, params.sortOrderPropName, searchInput.value);
     };
 
     // Return true if any property of obj contains searchKey. Otherwise, return false.

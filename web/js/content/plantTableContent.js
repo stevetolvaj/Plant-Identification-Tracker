@@ -23,18 +23,15 @@ function plantTableContent() {
                 newPlantList[i].Plant_ID = SortableTableUtils.makeNumber(plants[i].plantId);
                 newPlantList[i].Plant_Name = SortableTableUtils.makeText(plants[i].plantName),
                 newPlantList[i]._Image = SortableTableUtils.makeImage(plants[i].plantImage, "10rem");
-                newPlantList[i].Region = SortableTableUtils.makeText(plants[i].plantRegion);
+                newPlantList[i].Lattitude = SortableTableUtils.makeNumber(plants[i].plantLatitude);
+                newPlantList[i].Longitude = SortableTableUtils.makeNumber(plants[i].plantLongitude);
                 newPlantList[i].User_Email = SortableTableUtils.makeText(plants[i].webUserEmail);
 
             }
 
-               function inject(ele, where) {
-                where.innerHTML = "";
-                where.appendChild(ele);
-            }
+             const plantsTableContent = {title: "Plants Identified by Users", objList: newPlantList, sortOrderPropName: "Plant_ID", sortIcon: "icons/down.png"};
 
-
-            inject(MakeClickSortTable("Plants Identified by Users", newPlantList, "Plant_ID", "icons/down.png"), myDiv);
+            myDiv.appendChild(MakeClickSortTable(plantsTableContent));
   }
 
   return myDiv;

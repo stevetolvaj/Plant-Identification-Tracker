@@ -31,9 +31,12 @@ function userTableContent() {
                 where.innerHTML = ""; 
                 where.appendChild(ele);
             }
+            
+            const usersTableContent = {title: "Registered Users List", objList: newUsersList, sortOrderPropName: "User_ID", sortIcon: "icons/down.png"};
 
+            myDiv.appendChild(MakeClickSortTable(usersTableContent));
 
-            inject(MakeClickSortTable("Registered Users List", newUsersList, "User_ID", "icons/down.png"), myDiv);
+           // myDiv.appendChild(MakeClickSortTable("Registered Users List", newUsersList, "User_ID", "icons/down.png"));
   }
 
   return myDiv;
