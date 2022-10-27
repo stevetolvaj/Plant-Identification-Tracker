@@ -24,7 +24,7 @@ SortableTableUtils.makeText = function (text) {
 };
 
 SortableTableUtils.makeNumber = function (num, isFormatCurrency) {
-  
+
     var tableData = document.createElement('td');
 
     if (!num) { // empty data
@@ -39,7 +39,7 @@ SortableTableUtils.makeNumber = function (num, isFormatCurrency) {
         tmp = tmp.replace(" ", "");
         tmp = tmp.replace(",", "");
         tmp = tmp.replace("$", "");
-        
+
         if (isNaN(tmp)) { // non numeric data
             tableData.sortOrder = -1; // put invalid entries at top if sorting by this column
             num = "Not numeric " + num; // preserve the original data when added this error msg.

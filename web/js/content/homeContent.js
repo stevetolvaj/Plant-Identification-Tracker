@@ -1,6 +1,5 @@
 "use strict";
-
-function homeContent () {
+        function homeContent () {
 // ` this is a "back tick". You can use it to define multi-line strings in JavaScript.
 // 
 // NetBeans menu option "Source - Format" will not work with the text inside of a 

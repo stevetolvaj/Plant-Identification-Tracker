@@ -16,17 +16,15 @@ package model.plant;
  * There are no getter or setter methods since we are not trying to
  * protect this data in any way.  We want to let Java/JSP code have have
  * free access to put data in or take it out. */
-
 public class StringData {
-
 
     public String plantId = "";
     public String plantName = "";
     public String plantImage = "";
     public String plantLatitude = "";
     public String plantLongitude = "";
-    public String plantDescription = "";   
-    public String plantRegion = ""; 
+    public String plantDescription = "";
+    public String plantRegion = "";
     public String plantSeason = "";
     public String webUserId = "";// Foreign Key
     public String webUserEmail = ""; // Joined from web_user table

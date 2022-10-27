@@ -15,7 +15,6 @@ package model.webUser;
  * There are no getter or setter methods since we are not trying to
  * protect this data in any way.  We want to let Java/JSP code have have
  * free access to put data in or take it out. */
-
 public class StringData {
 
     public String webUserId = "";

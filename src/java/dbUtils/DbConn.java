@@ -13,7 +13,7 @@ public class DbConn {
     private java.sql.Connection conn = null;
 
     public DbConn() {
-        
+
         String dbAndPass = "FA22_3308_tuo21314?user=tuo21314&password=euciziph";
 
         try {
@@ -21,11 +21,11 @@ public class DbConn {
             Class.forName(DRIVER).newInstance();
             try {
                 // Assume you are running from home using tunneling...
-                String url = "jdbc:mysql://localhost:3307/"+dbAndPass;
+                String url = "jdbc:mysql://localhost:3307/" + dbAndPass;
 
                 // unless you are working from temple (e.g., lab computer or published)
                 if (this.isTemple()) {
-                    url = "jdbc:mysql://cis-linux2.temple.edu:3306/"+dbAndPass;
+                    url = "jdbc:mysql://cis-linux2.temple.edu:3306/" + dbAndPass;
                 }
                 this.conn = DriverManager.getConnection(url);
 
@@ -78,7 +78,7 @@ public class DbConn {
             System.out.println("***** hostName is [" + hostName + "] *****");
             if (hostName.endsWith("temple.edu")) {
                 temple = true;
-             } 
+            }
         } catch (Exception e) {
             recordError("Unable to get hostName: " + e.getMessage());
         }

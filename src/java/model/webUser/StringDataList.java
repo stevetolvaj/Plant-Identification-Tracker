@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 // This class holds a possible database error message followed by an array of objects 
 // (each object being a single row in a result set extracted from a database). 
-
 public class StringDataList {
 
     public String dbError = "";

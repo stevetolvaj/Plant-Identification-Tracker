@@ -56,23 +56,22 @@ public class FormatUtils {
             return "bad Integer in FormatUtils:" + obj.toString() + ". Error:" + e.getMessage();
         }
     } // formatInteger
-    
+
     public static String formatLocationCoordinate(Object obj) {
-       
+
         if (obj == null) {
             return "";
         }
         try {
             BigDecimal bd = (BigDecimal) obj;
-            DecimalFormat decimalFormat = new DecimalFormat("###########.########", 
-            new DecimalFormatSymbols(Locale.US));
-            
+            DecimalFormat decimalFormat = new DecimalFormat("###########.########",
+                    new DecimalFormatSymbols(Locale.US));
+
             return decimalFormat.format(bd);
         } catch (Exception e) {
             return "bad location coordinate in FormatUtils:" + obj.toString() + ". Error:" + e.getMessage();
         }
     } // formatDecimal
-    
 
     // plainInteger returns integer converted to string with no commas.
     public static String plainInteger(Object obj) {

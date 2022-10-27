@@ -14,11 +14,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="icons/plant.png" />  
 
-        
+
         <link href="style/main.css" rel="stylesheet" type="text/css" />  
         <link href="style/NavRouter.css" rel="stylesheet" type="text/css" />  
         <link href="style/myNavRouter.css" rel="stylesheet" type="text/css" />  
         <link href="style/clicksort.css" rel="stylesheet" type="text/css" /> 
+        <link href="style/account.css" rel="stylesheet" type="text/css" /> 
+
         <!-- Removed CSS below and moved some styles into main.css -->
         <!--        <link href="style/homepage.css" rel="stylesheet" type="text/css" />  -->
         <link href="style/plant.css" rel="stylesheet" type="text/css"/>
@@ -59,11 +61,13 @@
         <script src="js/content/plantContent.js"></script>
         <script src="js/content/plantTableContent.js"></script>
         <script src="js/content/userTableContent.js"></script>
+        <script src="js/content/account.js"></script>
+
 
         <script>
             "use strict";
             // Home | Account | Search | Tutorial | Blog
-           
+
             var myNavList = [
 
                 // action attribute is a function name - no quotes aroudnd home.
@@ -75,9 +79,9 @@
                         // These links show up in nav bar but not functional because 
                         // no linkURL and action.
                         {linkText: "Register", linkURL: "#/register", action: registerContent},
-                        {linkText: "Log In"},
-                        {linkText: "Log Out"},
-                        {linkText: "Profile"}
+                        {linkText: "Log In", linkURL: "#/logon", action: account.logon},
+                        {linkText: "Log Out", linkURL: "#/logOut", action: "webAPIs/logoutAPI.jsp"},
+                        {linkText: "Profile", linkURL: "#/profile", action: "webAPIs/getProfileAPI.jsp"}
                     ]
                 },
                 {
@@ -86,7 +90,7 @@
                         {linkText: "My Objects", linkURL: "#/myObjects", action: plantContent},
                         {linkText: "Users API", linkURL: "#/usersAPI", action: "webAPIs/listUsersAPI.jsp"},
                         {linkText: "Plants API", linkURL: "#/plantsAPI", action: "webAPIs/listPlantsAPI.jsp"},
-                        {linkText: "Users", linkURL: "#/userClickSort", action: userTableContent}, 
+                        {linkText: "Users", linkURL: "#/userClickSort", action: userTableContent},
                         {linkText: "Plants", linkURL: "#/plantClickSort", action: plantTableContent}
 
 //                        {linkText: "Slide Show"},
