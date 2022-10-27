@@ -22,7 +22,7 @@ function plantTableContent() {
             newPlantList[i] = {};
             newPlantList[i].Plant_ID = SortableTableUtils.makeNumber(plants[i].plantId);
             newPlantList[i].Plant_Name = SortableTableUtils.makeText(plants[i].plantName),
-            newPlantList[i]._Image = SortableTableUtils.makeImage(plants[i].plantImage, "10rem");
+                    newPlantList[i]._Image = SortableTableUtils.makeImage(plants[i].plantImage, "10rem");
             newPlantList[i].Lattitude = SortableTableUtils.makeNumber(plants[i].plantLatitude);
             newPlantList[i].Longitude = SortableTableUtils.makeNumber(plants[i].plantLongitude);
             newPlantList[i].User_Email = SortableTableUtils.makeText(plants[i].webUserEmail);

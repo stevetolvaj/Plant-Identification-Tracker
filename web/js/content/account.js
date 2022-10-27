@@ -5,26 +5,23 @@ var account = {};
 
 
 (function ( ) {
-    
-    
-    function buildProfile (userObj) {
+
+    function buildProfile(userObj) {
         var msg = "";
         if (userObj.errorMsg.length > 0) {
             msg += "<strong>Error: " + userObj.errorMsg + "</strong>";
         } else {
-            msg += "<strong>Welcome Web User " + userObj.webUserId + "</strong>";
-            msg += "<br/> Birthday: " + userObj.birthday;
+            msg += "<h2>Welcome Web User " + userObj.webUserId + "</h2>";
+            msg += "<p><br/> Birthday: " + userObj.birthday;
             msg += "<br/> MembershipFee: " + userObj.membershipFee;
             msg += "<br/> User Role: " + userObj.userRoleId + " " + userObj.userRoleType;
-            msg += "<p> <img src ='" + userObj.image + "'> </p>";
+            msg += "<img src ='" + userObj.image + "'> </p>";
         }
         return msg;
-    };
-    
-    
+    }
+    ;
+
     account.logon = function ( ) {
-
-
         var logonElement = document.createElement("div");
         logonElement.classList.add("account");
 
@@ -32,15 +29,15 @@ var account = {};
         title.innerHTML = "Enter your credentials";
         logonElement.appendChild(title);
 
-        var userNameLabel = document.createElement("label");
-        userNameLabel.innerHTML = "Enter Username";
-        logonElement.appendChild(userNameLabel);
+        var userEmailLabel = document.createElement("label");
+        userEmailLabel.innerHTML = "Email:";
+        logonElement.appendChild(userEmailLabel);
 
-        var userNameInput = document.createElement("input");
-        logonElement.appendChild(userNameInput);
+        var userEmailInput = document.createElement("input");
+        logonElement.appendChild(userEmailInput);
 
         var passwordLabel = document.createElement("label");
-        passwordLabel.innerHTML = "Enter Password";
+        passwordLabel.innerHTML = "Password:";
         logonElement.appendChild(passwordLabel);
 
         var passwordInput = document.createElement("input");
@@ -51,26 +48,53 @@ var account = {};
         logonButton.innerHTML = "LOGIN";
         logonElement.append(logonButton);
 
-        logonButton.onclick = function () {
+        var profileDiv = document.createElement("div");
+        logonElement.appendChild(profileDiv);
 
-            var username = userNameInput.value;
+        logonButton.onclick = function () {
+            var email = userEmailInput.value;
             var password = passwordInput.value;
 
-            var url = "webAPIs/logonAPI.jsp?email=" + username + "&password=" + password;
+            if (email.length < 1) {
+                alert("Enter a valid email address");
+                return;
+            }
+
+            if (password.length < 1) {
+                alert("Enter a valid password");
+                return;
+            }
+
+
+
+            var url = "webAPIs/logonAPI.jsp?email=" + email + "&password=" + password;
             console.log("Login button clicked");
-            ajax(url, showProfile, logonElement);
+            ajax(url, (userData) => {
+
+                profileDiv.innerHTML = buildProfile(userData);
+
+                //logonElement.innerHTML = buildProfile(userData);
+            }, logonElement);
         };
-        
-        function showProfile (userData) {
-           logonElement.innerHTML = buildProfile(userData);
-        }
 
         return logonElement;
     };
-    account.getProfile = function ( ) {};
-    // create a div, invoke Get Profile API, fill div w/ error msg or web user info, return the div. }
-    account.logoff = function ( ) {};
-    // create a div, invoke logoff API, fill div with “logged off” message, return the div.
+    account.getProfile = function ( ) {
+        var getProfileElement = document.createElement("div");
+        getProfileElement.classList.add("account");
+        ajax("webAPIs/getProfileAPI.jsp", (userData) => {
+            console.log(userData);
+            getProfileElement.innerHTML = buildProfile(userData);
+        }, getProfileElement);
 
+        return getProfileElement;
+    };
+
+    account.logoff = function ( ) {
+
+        var logoffElement = document.createElement("div");
+        ajax("webAPIs/logoutAPI.jsp", () => logoffElement.innerHTML = `<h2> User log out successful`, logoffElement);
+        return logoffElement;
+    };
 
 }( ));

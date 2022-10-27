@@ -8,11 +8,9 @@
     // Get user session object if credentials were correct.
     StringData sd = (StringData) session.getAttribute("user");
 
-    if (sd != null) {
-        sd.errorMsg = "Above data was read from the session";
-    } else {
+    if (sd == null) {
         sd = new StringData();
-        sd.errorMsg = "Sorry but there is no car object in the session right now";
+        sd.errorMsg = "Sorry but there is user logged into the session right now";
     }
 
     Gson gson = new Gson();
