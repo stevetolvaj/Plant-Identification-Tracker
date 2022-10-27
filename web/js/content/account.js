@@ -69,12 +69,9 @@ var account = {};
 
             var url = "webAPIs/logonAPI.jsp?email=" + email + "&password=" + password;
             console.log("Login button clicked");
-            ajax(url, (userData) => {
-
-                profileDiv.innerHTML = buildProfile(userData);
-
-                //logonElement.innerHTML = buildProfile(userData);
-            }, logonElement);
+            ajax(url, (userData) =>
+                profileDiv.innerHTML = buildProfile(userData)
+            , logonElement);
         };
 
         return logonElement;

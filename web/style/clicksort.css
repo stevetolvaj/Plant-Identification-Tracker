@@ -14,6 +14,10 @@ and open the template in the editor.
 
 }
 
+.clickSort input {
+    background-color: rgba(137, 242, 193, 0.8);
+}
+
 .clickSort table {
     margin:auto;     /* auto makes left and right margins the same, means centered */
     border-collapse: collapse;
