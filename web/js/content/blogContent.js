@@ -136,6 +136,18 @@
                 ascending and descending order on the table header names.
                 
             </p>
+            
+            <h3>Logon/Credentials</h3>
+            
+            <p> &emsp; The completion of the logon, logout, and profile APIs were fairly 
+                straightforward. There were not many issues that arose during development.
+                I have previously completed similar work using React Native and Java so they
+                were slightly similar. One topic I really enjoyed learning about was the IIFE 
+                (immediately invoking function execution). I found it very intersting and 
+                useful to control what data is needed to be kept during ceritaln execution
+                points of the program. One of the most important parts of this was learning
+                about session objects and the various things that can be done with them.<br/>
+            </p>
 
     `;
                 var ele = document.createElement("div");
