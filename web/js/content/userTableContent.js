@@ -27,16 +27,21 @@ function userTableContent() {
 
         }
 
-        function inject(ele, where) {
-            where.innerHTML = "";
-            where.appendChild(ele);
-        }
+        var link = document.createElement("a");
+        link.href = "#/register";
 
-        const usersTableContent = {title: "Registered Users List", objList: newUsersList, sortOrderPropName: "User_ID", sortIcon: "icons/down.png"};
+        var img = document.createElement("img");
+        img.src = "./icons/add.png";
+        
+         link.appendChild(img);
+        
+        img.style.cssText = 'width:2.5rem';
+        link.style.cssText = 'display: inline-block; vertical-align:middle';
+
+        const usersTableContent = {title: "Registered Users List " + link.outerHTML, objList: newUsersList, sortOrderPropName: "User_ID", sortIcon: "icons/down.png"};
 
         myDiv.appendChild(MakeClickSortTable(usersTableContent));
 
-        // myDiv.appendChild(MakeClickSortTable("Registered Users List", newUsersList, "User_ID", "icons/down.png"));
     }
 
     return myDiv;

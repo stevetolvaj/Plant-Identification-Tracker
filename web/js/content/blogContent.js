@@ -149,9 +149,9 @@
                 about session objects and the various things that can be done with them.
                 You may use the following links to view the progress made on Credentials:
                 <ul>
-                <li><a href="#/logon">Login</a></li>
-                <li><a href="#/logoff">Logout</a></li>
-                <li><a href="#/profile">Get Profile</a></li>
+                    <li><a href="#/logon">Login</a></li>
+                    <li><a href="#/logoff">Logout</a></li>
+                    <li><a href="#/profile">Get Profile</a></li>
                 </ul>
                 <br/>
             </p>
