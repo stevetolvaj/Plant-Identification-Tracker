@@ -147,10 +147,7 @@ function MakeClickSortTable(params) {
     var container = document.createElement("div");
     container.classList.add("clickSort");
 
-    // Add a heading (for the title) and add that to the container
-    var heading = document.createElement("h2");
-    heading.innerHTML = params.title;
-    container.appendChild(heading);
+    container.appendChild(params.headingDOM);
 
     //************************************** Filter input *********************
     var searchDiv = document.createElement("div");

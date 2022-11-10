@@ -28,8 +28,28 @@ function plantTableContent() {
             newPlantList[i].User_Email = SortableTableUtils.makeText(plants[i].webUserEmail);
 
         }
+        
+ var heading = Utils.make({
+            htmlTag: "h2",
+            parent: myDiv
+        });
+        Utils.make({// don't need reference to this span tag...
+            htmlTag: "span",
+            innerHTML: "Plants List ",
+            parent: heading
+        });
+        var img = Utils.make({
+            htmlTag: "img",
+            parent: heading
+        });
+        img.src = "./icons/add.png";
+        img.style.cssText = 'width:2.5rem;display: inline-block; vertical-align:middle';
+        img.onclick = function () {
+            // By changing the URL, you invoke the user insert. 
+            window.location.hash = "#/plantInsert";
+        };
 
-        const plantsTableContent = {title: "Plants Identified by Users", objList: newPlantList, sortOrderPropName: "Plant_ID", sortIcon: "icons/down.png"};
+        const plantsTableContent = {headingDOM: heading, objList: newPlantList, sortOrderPropName: "Plant_ID", sortIcon: "icons/down.png"};
 
         myDiv.appendChild(MakeClickSortTable(plantsTableContent));
     }

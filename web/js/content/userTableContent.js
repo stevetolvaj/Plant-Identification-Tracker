@@ -27,18 +27,29 @@ function userTableContent() {
 
         }
 
-        var link = document.createElement("a");
-        link.href = "#/register";
 
-        var img = document.createElement("img");
+ var heading = Utils.make({
+            htmlTag: "h2",
+            parent: myDiv
+        });
+        Utils.make({// don't need reference to this span tag...
+            htmlTag: "span",
+            innerHTML: "Web User List ",
+            parent: heading
+        });
+        var img = Utils.make({
+            htmlTag: "img",
+            parent: heading
+        });
         img.src = "./icons/add.png";
+        img.style.cssText = 'width:2.5rem;display: inline-block; vertical-align:middle';
+        img.onclick = function () {
+            // By changing the URL, you invoke the user insert. 
+            window.location.hash = "#/register";
+        };
         
-         link.appendChild(img);
-        
-        img.style.cssText = 'width:2.5rem';
-        link.style.cssText = 'display: inline-block; vertical-align:middle';
 
-        const usersTableContent = {title: "Registered Users List " + link.outerHTML, objList: newUsersList, sortOrderPropName: "User_ID", sortIcon: "icons/down.png"};
+        const usersTableContent = {headingDOM: heading, objList: newUsersList, sortOrderPropName: "User_ID", sortIcon: "icons/down.png"};
 
         myDiv.appendChild(MakeClickSortTable(usersTableContent));
 

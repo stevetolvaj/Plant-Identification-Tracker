@@ -20,6 +20,7 @@ public class StringData {
     public String webUserId = "";
     public String userEmail = "";
     public String userPassword = "";
+    public String userPassword2 = "";
     public String image = "";
     public String birthday = "";
     public String membershipFee = "";
@@ -30,6 +31,25 @@ public class StringData {
 
     // default constructor leaves all data members with empty string (Nothing null).
     public StringData() {
+    }
+    
+    
+    public int getCharacterCount() {
+        String s = this.webUserId + this.userEmail + this.userPassword + this.image + this.birthday
+                + this.membershipFee + this.userRoleId + this.userRoleType;
+        return s.length();
+    }
+
+    @Override
+    public String toString() {
+        return "Web User Id:" + this.webUserId
+                + ", User Email: " + this.userEmail
+                + ", User Password: " + this.userPassword
+                + ", Image: " + this.image
+                + ", Birthday: " + this.birthday
+                + ", Membership Fee: " + this.membershipFee
+                + ", User Role Id: " + this.userRoleId
+                + ", User Role Type: " + this.userRoleType;
     }
 
 }
