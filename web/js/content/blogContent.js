@@ -153,7 +153,24 @@
                     <li><a href="#/logoff">Logout</a></li>
                     <li><a href="#/profile">Get Profile</a></li>
                 </ul>
-                <br/>
+            </p>
+            
+                        <h3>Registration/Insert</h3>
+            
+            <p> &emsp; The implementation of insert functionality for the website involved
+                a few different parts. The <a href="#/register">registration page</a> 
+                was created using a reusable component. This same reusable component
+                can be accessed throught the <a href="#/userClickSort">users table</a> 
+                under the search menu by clicking the add button next to the title. Plants
+                can also be added by clicking the add button next to the title of the 
+                <a href="#/plantClickSort">plants table</a> which is also created with
+                a similar reusable component. </br>
+                &emsp; Creating insert functionality for the website was slightly more difficult
+                while using reusable components and functions but worth the extra time and effort.
+                 It was very interesting to create
+                code that is used to make tables depending on what type of user input is needed.
+                Even though it was more difficult it was useful to learn such techniques which
+                can be reused on different web applications in the future.
             </p>
 
     `;

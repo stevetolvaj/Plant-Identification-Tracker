@@ -12,7 +12,7 @@ public class DbMods {
     private static StringData validate(StringData inputData) {
 
         StringData errorMsgs = new StringData();
-        
+
 //    public String plantId = "";
 //    public String plantName = "";
 //    public String plantImage = "";
@@ -22,8 +22,6 @@ public class DbMods {
 //    public String plantRegion = "";
 //    public String plantSeason = "";
 //    public String webUserId = "";// Foreign Key
-
-
         // Validation
         errorMsgs.plantName = ValidationUtils.stringValidationMsg(inputData.plantName, 45, true);
         errorMsgs.plantImage = ValidationUtils.stringValidationMsg(inputData.plantImage, 500, false);
@@ -56,7 +54,7 @@ public class DbMods {
                     "ORDER BY web_user_id ";
              */
             // Start preparing SQL statement
-            String sql = "INSERT INTO plants (plant_name, plant_image, plant_description, plant_region, " 
+            String sql = "INSERT INTO plants (plant_name, plant_image, plant_description, plant_region, "
                     + "plant_season, plant_latitiude, plant_longitude, web_user_id) "
                     + "values (?,?,?,?,?,?,?,?)";
 
@@ -74,7 +72,7 @@ public class DbMods {
 
             pStatement.setBigDecimal(6, ValidationUtils.decimalConversion(inputData.plantLatitude));
             pStatement.setBigDecimal(7, ValidationUtils.decimalConversion(inputData.plantLongitude));
-    
+
             pStatement.setInt(8, ValidationUtils.integerConversion(inputData.webUserId));
 
             // here the SQL statement is actually executed

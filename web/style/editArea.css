@@ -14,6 +14,10 @@
     margin: 0.5rem;
 }
 
+.editArea button:hover {
+    background-color: lightblue;
+}
+
 .editArea td {
     padding-left: 0.5rem;
     font-weight: bold;
@@ -22,4 +26,10 @@
 
 .editArea .error {
     color:#7B241C; border:none;
+}
+
+.editArea select {
+    min-width: 195px;
+    min-height: 2.5rem;
+    box-shadow: 3px 3px #1d301d;
 }

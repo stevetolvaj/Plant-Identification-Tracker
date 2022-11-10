@@ -15,7 +15,7 @@ public class UserEmailView {
         StringDataList sdl = new StringDataList();
         try {
             String sql = "SELECT web_user_id, user_email "
-                    + "FROM web_user ORDER BY web_user_id ";  // you always want to order by something, not just random order.
+                    + "FROM web_user ORDER BY user_email ";  // you always want to order by something, not just random order.
             PreparedStatement stmt = dbc.getConn().prepareStatement(sql);
             ResultSet results = stmt.executeQuery();
             while (results.next()) {

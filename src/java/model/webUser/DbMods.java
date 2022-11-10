@@ -9,9 +9,6 @@ import java.sql.ResultSet;
 import java.sql.Date;
 
 public class DbMods {
-    
-    
-    
 
     public static StringData findByLogon(DbConn dbc, String email, String password) {
 
@@ -59,8 +56,8 @@ public class DbMods {
         return sd;
 
     } // findById
-    
-     public static StringData insertUser(StringData inputData, DbConn dbc) {
+
+    public static StringData insertUser(StringData inputData, DbConn dbc) {
 
         StringData errorMsgs = new StringData();
         errorMsgs = validate(inputData);
@@ -114,8 +111,8 @@ public class DbMods {
         } // customerId is not null and not empty string.
         return errorMsgs;
     } // insert
-     
-      private static StringData validate(StringData inputData) {
+
+    private static StringData validate(StringData inputData) {
 
         StringData errorMsgs = new StringData();
 

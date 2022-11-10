@@ -1,7 +1,9 @@
+"use strict";
+
 var plantMods = {}; // Update Solutioin Spring 2022
 
 (function () {  // This is an IIFE.
-    
+
     // Fields for plants:
 //    public String plantId = "";
 //    public String plantName = "";
@@ -22,38 +24,38 @@ var plantMods = {}; // Update Solutioin Spring 2022
         },
         {
             fieldName: "plantName"
-            //prompt: "Email"  // if you forget to add the prompt, it uses the field name as prompt
+                    //prompt: "Email"  // if you forget to add the prompt, it uses the field name as prompt
         },
         {
             fieldName: "plantDescription",
             prompt: "Description"
-           
-            
+
+
         },
         {
             fieldName: "plantImage",
             prompt: "Image"
-        
+
         },
         {
             fieldName: "plantLatitude",
             prompt: "Latitude"
-           
+
         },
         {
             fieldName: "plantLongitude",
             prompt: "Longitude"
-            
+
         },
         {
             fieldName: "plantRegion",
             prompt: "Region"
-            
+
         },
         {
             fieldName: "plantSeason",
             prompt: "Season"
-            
+
         },
         {
             fieldName: "webUserId",
@@ -90,7 +92,7 @@ var plantMods = {}; // Update Solutioin Spring 2022
                         "Programmer Error: Cannot Create Email Pick List... " +
                         obj.dbError;
             } else {
-                
+
                 var selectTag = Utils.makePickList({
                     list: obj.emailList,
                     idProp: "webUserId",
@@ -113,14 +115,14 @@ var plantMods = {}; // Update Solutioin Spring 2022
             // Place the id (selected option of the select tag) into the userInputObj
             var idSelect = userEditArea["webUserId"].inputTd.getElementsByTagName("select")[0];
             userInputObj.webUserId = idSelect.options[idSelect.selectedIndex].value;
-           
+
 
             // convert userInputObj to JSON and URL encode (e.g., turns space to %20), 
             // URL encode so that the server does not reject URL for security reasons.
             var urlParams = encodeURIComponent(JSON.stringify(userInputObj));
             console.log("Insert Save URL params: " + urlParams);
 
-            ajax("webAPIs/insertOtherAPI.jsp?jsonData=" + urlParams, reportInsert, userEditArea.formMsg);
+            ajax("webAPIs/insertPlantsAPI.jsp?jsonData=" + urlParams, reportInsert, userEditArea.formMsg);
 
             function reportInsert(obj) {
 

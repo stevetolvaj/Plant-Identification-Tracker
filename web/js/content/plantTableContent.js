@@ -28,8 +28,8 @@ function plantTableContent() {
             newPlantList[i].User_Email = SortableTableUtils.makeText(plants[i].webUserEmail);
 
         }
-        
- var heading = Utils.make({
+
+        var heading = Utils.make({
             htmlTag: "h2",
             parent: myDiv
         });

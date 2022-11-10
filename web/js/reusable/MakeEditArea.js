@@ -23,6 +23,8 @@
 //  * inputTd so we can place a select tag (instead of input box) inside the second column of the row. 
 //            (this is for Foreign Key type fields that use a select tag).
 
+"use strict";
+
 function MakeEditArea(params) {
 
     function makeInputRow(fieldDef) {

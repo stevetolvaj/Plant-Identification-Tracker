@@ -1,8 +1,6 @@
 package model.userEmail;
 
-
 import java.util.ArrayList;
-
 
 // The purpose of this class is to have a nice java object that can be converted to JSON 
 // to communicate everything necessary to the web page (the array of users plus a possible 

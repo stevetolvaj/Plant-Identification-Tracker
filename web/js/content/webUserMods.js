@@ -1,3 +1,5 @@
+"use strict";
+
 var webUserMods = {}; // Update Solutioin Spring 2022
 
 (function () {  // This is an IIFE, an immediately executing function.
@@ -20,7 +22,7 @@ var webUserMods = {}; // Update Solutioin Spring 2022
         },
         {
             fieldName: "userEmail"
-            //prompt: "Email"  // if you forget to add the prompt, it uses the field name as prompt
+                    //prompt: "Email"  // if you forget to add the prompt, it uses the field name as prompt
         },
         {
             fieldName: "userPassword",
@@ -82,7 +84,7 @@ var webUserMods = {}; // Update Solutioin Spring 2022
                         "Programmer Error: Cannot Create Role Pick List... " +
                         obj.dbError;
             } else {
-                
+
                 var selectTag = Utils.makePickList({
                     list: obj.roleList,
                     idProp: "userRoleId",
@@ -124,7 +126,7 @@ var webUserMods = {}; // Update Solutioin Spring 2022
                 // write all the error messages to the UI (into the third column for each row).
                 userEditArea.writeErrorObjToUI(obj);
 
-                if (obj.errorMsg.length === 0) { // success
+                if (obj.errorMsg.length === 0 && obj.userPassword2.length === 0) { // success
                     userEditArea.formMsg.innerHTML = "Record successfully inserted.";
                 } else {
                     userEditArea.formMsg.innerHTML = obj.errorMsg;

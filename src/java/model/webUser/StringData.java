@@ -32,8 +32,7 @@ public class StringData {
     // default constructor leaves all data members with empty string (Nothing null).
     public StringData() {
     }
-    
-    
+
     public int getCharacterCount() {
         String s = this.webUserId + this.userEmail + this.userPassword + this.image + this.birthday
                 + this.membershipFee + this.userRoleId + this.userRoleType;

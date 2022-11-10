@@ -28,7 +28,7 @@ function userTableContent() {
         }
 
 
- var heading = Utils.make({
+        var heading = Utils.make({
             htmlTag: "h2",
             parent: myDiv
         });
@@ -47,7 +47,7 @@ function userTableContent() {
             // By changing the URL, you invoke the user insert. 
             window.location.hash = "#/register";
         };
-        
+
 
         const usersTableContent = {headingDOM: heading, objList: newUsersList, sortOrderPropName: "User_ID", sortIcon: "icons/down.png"};
 

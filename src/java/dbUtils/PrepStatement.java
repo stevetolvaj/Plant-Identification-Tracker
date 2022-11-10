@@ -23,14 +23,14 @@ public class PrepStatement {
     against the open database of the connection object), an error message is written
     to the glassfish log (in NetBeans output pane). This error message will also 
     be available by calling the getErrorMsg() method.
-    */
+     */
     public PrepStatement(DbConn dbc, String sql) {
         this.sql = sql;
         try {
             java.sql.Connection con = dbc.getConn();
             this.ps = con.prepareStatement(sql);
         } catch (Exception e) {
-            String msg = " PrepStatement: Exception in constructor. Sql is " +this.sql + " Error message is " 
+            String msg = " PrepStatement: Exception in constructor. Sql is " + this.sql + " Error message is "
                     + e.getMessage();
             System.out.println("====> " + msg);
             this.errorMsg += msg;
@@ -42,7 +42,7 @@ public class PrepStatement {
     public String getErrorMsg() {
         return this.errorMsg;
     }
-    
+
     // Replace the position-th question mark with newDate.
     // If newDate is null, encode null into that question mark.
     public String setDate(int position, java.sql.Date newDate) {
@@ -134,5 +134,5 @@ public class PrepStatement {
             return -1;
         }
     }
-    
+
 } // class

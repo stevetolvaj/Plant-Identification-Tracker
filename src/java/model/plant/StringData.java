@@ -35,8 +35,8 @@ public class StringData {
     // default constructor leaves all data members with empty string (Nothing null).
     public StringData() {
     }
-    
-        public int getCharacterCount() {
+
+    public int getCharacterCount() {
         String s = this.webUserId + this.plantName + this.plantImage + this.plantLatitude + this.plantLongitude
                 + this.plantDescription + this.plantRegion + this.plantSeason + this.webUserId;
         return s.length();
