@@ -113,8 +113,9 @@ var webUserMods = {}; // Update Solutioin Spring 2022
             var urlParams = encodeURIComponent(JSON.stringify(userInputObj));
             console.log("Insert Save URL params: " + urlParams);
 
-            ajax("webAPIs/insertUserAPI.jsp?jsonData=" + urlParams, reportInsert, userEditArea.formMsg);
 
+            ajax("webAPIs/insertUserAPI.jsp?jsonData=" + urlParams, reportInsert, userEditArea.formMsg);
+           
             function reportInsert(obj) {
 
                 // obj is the error message object (passed back from the Insert API).
@@ -126,7 +127,7 @@ var webUserMods = {}; // Update Solutioin Spring 2022
                 // write all the error messages to the UI (into the third column for each row).
                 userEditArea.writeErrorObjToUI(obj);
 
-                if (obj.errorMsg.length === 0 && obj.userPassword2.length === 0) { // success
+                if (obj.errorMsg.length === 0) { // success
                     userEditArea.formMsg.innerHTML = "Record successfully inserted.";
                 } else {
                     userEditArea.formMsg.innerHTML = obj.errorMsg;

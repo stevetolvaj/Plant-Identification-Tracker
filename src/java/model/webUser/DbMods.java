@@ -127,6 +127,7 @@ public class DbMods {
 
         if (inputData.userPassword.compareTo(inputData.userPassword2) != 0) { // case sensative comparison
             errorMsgs.userPassword2 = "Both passwords must match";
+            errorMsgs.errorMsg = "Check passwords";
         }
 
         errorMsgs.image = ValidationUtils.stringValidationMsg(inputData.image, 300, true);
