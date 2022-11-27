@@ -137,5 +137,85 @@ var webUserMods = {}; // Update Solutioin Spring 2022
 
         return component;
     }; // webUserMods.insert
+    
+     webUserMods.update = function (webUserId) {
+
+        userEditArea.areaTitle.innerHTML = "Update Web User";
+        userEditArea.blankInputs();
+        userEditArea.button.innerHTML = "Update Save";
+        userEditArea.formMsg.innerHTML = ""; // wipe out any old message
+
+        console.log("webUsers.update called with webUserId " + webUserId);
+
+        // get the web user record with the given webUserId
+        ajax("webAPIs/getUserByIdAPI.jsp?userId=" + webUserId, gotRecordById, userEditArea.formMsg);
+
+        // webUserObj is the output of getUserByIdAPI.jsp
+        function gotRecordById(webUserObj) {
+
+            userEditArea.writeDbValuesToUI(webUserObj);
+
+            // get an updated list of roles (even though this does not change often), 
+            // just so you see how to get a fresh role list with each web user insert.
+            ajax("webAPIs/getRolesAPI.jsp", processRoles, userEditArea.formMsg);
+
+            // obj is the output from getRolesAPI.jsp
+            function processRoles(obj) {
+
+                if (obj.dbError.length > 0) {
+                    userEditArea["userRoleId"].errorTd.innerHTML += "Programmer Error: Cannot Create Role Pick List";
+                } else {
+                    console.log("userRoleId is " + webUserObj.userRoleId);
+                    var selectTag = Utils.makePickList({
+                        list: obj.roleList,
+                        idProp: "userRoleId",
+                        displayProp: "userRoleType",
+                        selectedKey: webUserObj.userRoleId  // key that is to be pre-selected (optional)
+                    });
+
+                    // Put the User Role Select Tag (just created) into the input column of the 
+                    // userRoleId row of the HTML table we're using for data entry.
+                    userEditArea["userRoleId"].inputTd.innerHTML = "";
+                    userEditArea["userRoleId"].inputTd.appendChild(selectTag);
+                }
+            } // processRoles
+        } // gotRecordById
+
+
+        userEditArea.button.onclick = function () { // Update Save
+
+            // collect all the user input values into an object. 
+            var userInputObj = userEditArea.getDataFromUI();
+
+            // find the user role selected from the select tag (and put it into userInputObj).
+            var roleSelect = userEditArea["userRoleId"].inputTd.getElementsByTagName("select")[0];
+            userInputObj.userRoleId = roleSelect.options[roleSelect.selectedIndex].value;
+
+            // convert userInputObj to JSON and URL encode (turns space to %20), 
+            // so server does not reject URL for security reasons.
+            var urlParams = encodeURIComponent(JSON.stringify(userInputObj));
+            console.log("Update Save URL params: " + urlParams);
+
+            ajax("webAPIs/updateUserAPI.jsp?jsonData=" + urlParams, reportUpdate, userEditArea.formMsg);
+
+            function reportUpdate(jsErrorObj) {
+
+                userEditArea.writeErrorObjToUI(jsErrorObj);
+
+                // jsErrorObj is a StringData object full of error messages 
+                // (using same field names). 
+
+                if (jsErrorObj.errorMsg.length === 0) { // success
+                    userEditArea.formMsg.innerHTML = "Record successfully updated. ";
+                } else {
+                    userEditArea.formMsg.innerHTML = jsErrorObj.errorMsg;
+                }
+            }
+        }; //updateSave submit button
+
+        return component;
+
+    }; // end of webUsers.update
+    
 
 }());  // end of the IIFE
