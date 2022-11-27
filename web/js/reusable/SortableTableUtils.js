@@ -115,3 +115,16 @@ SortableTableUtils.makeImage = function (imageFileName, width) {
     tableData.sortOrder = null; // should not be sorting on image columns
     return tableData;
 };
+
+SortableTableUtils.makeLink = function (innerHTML, href) {
+    //console.log("makeLink inner is "+innerHTML + " and href is "+href);
+
+    var tableData = document.createElement('td');
+    var aTag = document.createElement("a");
+    aTag.innerHTML = innerHTML;
+    aTag.href = href;
+    tableData.appendChild(aTag);
+    tableData.style.textAlign = "center"; // center the links 
+    tableData.sortOrder = innerHTML;
+    return tableData;
+};
