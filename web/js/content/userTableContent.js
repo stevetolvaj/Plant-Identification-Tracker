@@ -24,6 +24,10 @@ function userTableContent() {
                     newUsersList[i]._Image = SortableTableUtils.makeImage(users[i].image, "10rem");
             newUsersList[i].DOB = SortableTableUtils.makeDate(users[i].birthday);
             newUsersList[i].Role = SortableTableUtils.makeText(users[i].userRoleType);
+            newUsersList[i]._Update = SortableTableUtils.makeLink(
+                    "<img src='icons/update.png' style='width:1rem' />", // innerHTML of link
+                    '#/userUpdate/' + users[i].webUserId             // href of link
+                    );
 
         }
 
