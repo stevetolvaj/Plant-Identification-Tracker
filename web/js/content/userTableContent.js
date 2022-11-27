@@ -28,8 +28,6 @@ function userTableContent() {
                     "<img src='icons/update.png' style='width:1rem' />", // innerHTML of link
                     '#/userUpdate/' + users[i].webUserId             // href of link
                     );
-                        // Remove this once you are done debugging...
-            newUsersList[i].Error_Msg = SortableTableUtils.makeText(users[i].errorMsg);
 
         }
 
