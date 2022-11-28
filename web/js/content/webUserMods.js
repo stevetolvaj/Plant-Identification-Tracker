@@ -115,7 +115,7 @@ var webUserMods = {}; // Update Solutioin Spring 2022
 
 
             ajax("webAPIs/insertUserAPI.jsp?jsonData=" + urlParams, reportInsert, userEditArea.formMsg);
-           
+
             function reportInsert(obj) {
 
                 // obj is the error message object (passed back from the Insert API).
@@ -137,8 +137,8 @@ var webUserMods = {}; // Update Solutioin Spring 2022
 
         return component;
     }; // webUserMods.insert
-    
-     webUserMods.update = function (webUserId) {
+
+    webUserMods.update = function (webUserId) {
 
         userEditArea.areaTitle.innerHTML = "Update Web User";
         userEditArea.blankInputs();
@@ -216,6 +216,6 @@ var webUserMods = {}; // Update Solutioin Spring 2022
         return component;
 
     }; // end of webUsers.update
-    
+
 
 }());  // end of the IIFE

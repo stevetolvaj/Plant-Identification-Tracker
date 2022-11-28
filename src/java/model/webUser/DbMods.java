@@ -56,7 +56,7 @@ public class DbMods {
         return sd;
 
     } // findById
-    
+
     public static StringData findById(DbConn dbc, String id) {
 
         StringData sd = new StringData();
@@ -179,7 +179,7 @@ public class DbMods {
 
         return errorMsgs;
     } // validate 
-    
+
     public static StringData update(StringData inputData, DbConn dbc) {
 
         StringData errorMsgs = new StringData();

@@ -27,6 +27,11 @@ function plantTableContent() {
             newPlantList[i].Longitude = SortableTableUtils.makeNumber(plants[i].plantLongitude);
             newPlantList[i].User_Email = SortableTableUtils.makeText(plants[i].webUserEmail);
 
+            newPlantList[i]._Update = SortableTableUtils.makeLink(
+                    "<img src='icons/update.png' style='width:1rem' />", // innerHTML of link
+                    '#/plantUpdate/' + plants[i].plantId             // href of link
+                    );
+
         }
 
         var heading = Utils.make({

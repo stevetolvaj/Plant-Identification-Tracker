@@ -19,12 +19,13 @@ var plantMods = {}; // Update Solutioin Spring 2022
     var fields = [
         {
             fieldName: "plantId",
-            prompt: "Id",
+            prompt: "ID",
             disabled: true
         },
         {
-            fieldName: "plantName"
-                    //prompt: "Email"  // if you forget to add the prompt, it uses the field name as prompt
+            fieldName: "plantName",
+            prompt: "Name"
+
         },
         {
             fieldName: "plantDescription",
@@ -144,6 +145,80 @@ var plantMods = {}; // Update Solutioin Spring 2022
         };
 
         return component;
-    }; // webUserMods.insert
+    }; // plantMods.insert
+
+    plantMods.update = function (plantId) {
+        userEditArea.areaTitle.innerHTML = "Update Plant";
+        userEditArea.blankInputs();
+        userEditArea.button.innerHTML = "Update Save";
+        userEditArea.formMsg.innerHTML = ""; // wipe out any old message
+
+        console.log("plantMods.update called with plantId " + plantId);
+
+        ajax("webAPIs/getPlantByIdAPI.jsp?plantId=" + plantId, gotRecordById, userEditArea.formMsg);
+
+        function gotRecordById(plantObj) {
+
+            userEditArea.writeDbValuesToUI(plantObj);
+
+            ajax("webAPIs/getEmailsAPI.jsp", processEmails, userEditArea.formMsg);
+
+            function processEmails(obj) {
+                // obj is the list of roles returned by the getRolesAPI.jsp
+                if (obj.dbError.length > 0) {
+                    userEditArea["webUserId"].errorTd.innerHTML +=
+                            "Programmer Error: Cannot Create Email Pick List... " +
+                            obj.dbError;
+                } else {
+                    console.log("webUserId is " + plantObj.webUserId);
+                    var selectTag = Utils.makePickList({
+                        list: obj.emailList,
+                        idProp: "webUserId",
+                        displayProp: "userEmail",
+                        selectedKey: plantObj.webUserId
+                    });
+
+                    // put the Email select tag (just made) into the inputTd property 
+                    // of the UserId row of the HTML table 
+                    userEditArea["webUserId"].inputTd.innerHTML = "";
+                    userEditArea["webUserId"].inputTd.appendChild(selectTag);
+                }
+            } // processEmails
+        } // gotRecordById
+
+        userEditArea.button.onclick = function () { // Update Save
+
+            // collect all the user input values into an object. 
+            var plantObj = userEditArea.getDataFromUI();
+
+            // find the user role selected from the select tag (and put it into userInputObj).
+            var userSelect = userEditArea["webUserId"].inputTd.getElementsByTagName("select")[0];
+            plantObj.webUserId = userSelect.options[userSelect.selectedIndex].value;
+
+            // convert userInputObj to JSON and URL encode (turns space to %20), 
+            // so server does not reject URL for security reasons.
+            var urlParams = encodeURIComponent(JSON.stringify(plantObj));
+            console.log("Update Save URL params: " + urlParams);
+
+            ajax("webAPIs/updatePlantAPI.jsp?jsonData=" + urlParams, reportUpdate, userEditArea.formMsg);
+
+            function reportUpdate(jsErrorObj) {
+
+                userEditArea.writeErrorObjToUI(jsErrorObj);
+
+                // jsErrorObj is a StringData object full of error messages 
+                // (using same field names). 
+
+                if (jsErrorObj.errorMsg.length === 0) { // success
+                    userEditArea.formMsg.innerHTML = "Record successfully updated. ";
+                } else {
+                    userEditArea.formMsg.innerHTML = jsErrorObj.errorMsg;
+                }
+            }
+        }; //updateSave submit button
+
+        return component;
+
+    };
 
 }());  // end of the IIFE

@@ -34,7 +34,7 @@ public class StringData {
     }
 
     public int getCharacterCount() {
-        String s = this.webUserId + this.userEmail + this.userPassword+ this.userPassword2 + this.image + this.birthday
+        String s = this.webUserId + this.userEmail + this.userPassword + this.userPassword2 + this.image + this.birthday
                 + this.membershipFee + this.userRoleId + this.userRoleType;
         return s.length();
     }
