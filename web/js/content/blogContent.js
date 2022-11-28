@@ -172,6 +172,20 @@
                 Even though it was more difficult it was useful to learn such techniques which
                 can be reused on different web applications in the future.
             </p>
+            
+                        <h3>Update Web Users and Plants</h3>
+            
+                <p> &emsp; The implementation of the update feature for the website is 
+                    used to update users and plants in the database. Both of these can
+                    be updated from the user and plant tables under search. It was fairly
+                    easy creating the functions for the server-side code. The more difficult
+                    portion was making the edit button open to the correct element's ID to 
+                    auto-populate the data in the form/table. The nav router implementation
+                    was interesting and very useful to call the update function with a parameter
+                    of the ID that will be updated. I learned a lot about different techniques to 
+                    make code more reusable and also make the data update dynamically. Overall this
+                    homework was about the difficulty I would have expected near the end of the project.
+            </p>
 
     `;
                 var ele = document.createElement("div");
