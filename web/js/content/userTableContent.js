@@ -28,6 +28,10 @@ function userTableContent() {
                     "<img src='icons/update.png' style='width:1rem' />", // innerHTML of link
                     '#/userUpdate/' + users[i].webUserId             // href of link
                     );
+            newUsersList[i]._ = SortableTableUtils.makeLink(
+                    "<img src='icons/delete.png' style='width:1rem' />", // innerHTML of link
+                    '#/userDelete/' + users[i].webUserId             // href of link
+                    );
 
         }
 
