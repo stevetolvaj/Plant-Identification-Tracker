@@ -4,17 +4,17 @@ function userTableContent() {
     var myDiv = document.createElement("div");
 
     ajax("./webAPIs/listUsersAPI.jsp", processUserData, myDiv);
-    
+
     function deleteUser(userId, td) {
-    console.log("to delete user " + userId);
+        console.log("to delete user " + userId);
 
         if (confirm("Do you really want to delete user " + userId + "? ")) {
-            
+
             var error = "";
             ajax("./webAPIs/deleteUserAPI.jsp?deleteId=" + userId, successfulDelete, error);
-            
+
             function successfulDelete(result) {
-                
+
                 if (result.errorMsg.length > 0) {
                     if (result.errorMsg.includes("foreign key constraint fails")) {
                         console.log(result.errorMsg);
@@ -25,21 +25,21 @@ function userTableContent() {
                     } else {
                         alert(result.errorMsg);
                     }
-                    
+
                 } else {
 
-                var dataRow = td.parentNode;
-                var rowIndex = dataRow.rowIndex - 1; 
-                var dataTable = dataRow.parentNode;
-                dataTable.deleteRow(rowIndex);
+                    var dataRow = td.parentNode;
+                    var rowIndex = dataRow.rowIndex - 1;
+                    var dataTable = dataRow.parentNode;
+                    dataTable.deleteRow(rowIndex);
+                }
             }
-            }
-            
+
             console.log(error);
-            
+
             if (error.length > 0) {
                 alert(error);
-                
+
             }
 
         }
@@ -69,10 +69,10 @@ function userTableContent() {
                     '#/userUpdate/' + users[i].webUserId             // href of link
                     );
             newUsersList[i]._ = SortableTableUtils.makeImage("icons/delete.png", '1rem');
-            
+
             const userId = users[i].webUserId;
             newUsersList[i]._.onclick = function () {
-            deleteUser(userId, this);
+                deleteUser(userId, this);
             };
 
         }

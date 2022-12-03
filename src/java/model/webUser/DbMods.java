@@ -234,8 +234,8 @@ public class DbMods {
         } // customerId is not null and not empty string.
         return errorMsgs;
     } // update
-    
-     public static String delete (String userId, DbConn dbc) {
+
+    public static String delete(String userId, DbConn dbc) {
 
         if (userId == null) {
             return "Error in modelwebUser.DbMods.delete: cannot delete web_user record because 'userId' is null";
@@ -270,7 +270,5 @@ public class DbMods {
         return result;
     } // Delete
 
-
 } // class  
 
-       

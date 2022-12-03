@@ -173,18 +173,32 @@
                 can be reused on different web applications in the future.
             </p>
             
-                        <h3>Update Web Users and Plants</h3>
+                    <h3>Update Web Users and Plants</h3>
             
-                <p> &emsp; The implementation of the update feature for the website is 
-                    used to update users and plants in the database. Both of these can
-                    be updated from the user and plant tables under search. It was fairly
-                    easy creating the functions for the server-side code. The more difficult
-                    portion was making the edit button open to the correct element's ID to 
-                    auto-populate the data in the form/table. The nav router implementation
-                    was interesting and very useful to call the update function with a parameter
-                    of the ID that will be updated. I learned a lot about different techniques to 
-                    make code more reusable and also make the data update dynamically. Overall this
-                    homework was about the difficulty I would have expected near the end of the project.
+            <p> &emsp; The implementation of the update feature for the website is 
+                used to update users and plants in the database. Both of these can
+                be updated from the user and plant tables under search. It was fairly
+                easy creating the functions for the server-side code. The more difficult
+                portion was making the edit button open to the correct element's ID to 
+                auto-populate the data in the form/table. The nav router implementation
+                was interesting and very useful to call the update function with a parameter
+                of the ID that will be updated. I learned a lot about different techniques to 
+                make code more reusable and also make the data update dynamically. Overall this
+                homework was about the difficulty I would have expected near the end of the project.
+            </p>
+            
+                    <h3>Delete Web Users and Plants</h3>
+            
+            <p> &emsp; The feature of deleting plants and web users was fairly 
+                straightforward. It was interesting to learn how to set the on
+                click listener with the delete icon in the actual array used to 
+                populate the table. The user error messages were also interesting 
+                to implement. I came up with the idea to check what the more complicated
+                message contained in the client side code and then showed an alert
+                with more simplified text. This way there would still be a logged
+                message with the original text and a user friendly alert at the 
+                same time. Overall this homework was slightly easier than the last
+                for me but still helped me learn some new problem solving skills.
             </p>
 
     `;
