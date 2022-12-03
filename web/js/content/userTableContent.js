@@ -4,6 +4,46 @@ function userTableContent() {
     var myDiv = document.createElement("div");
 
     ajax("./webAPIs/listUsersAPI.jsp", processUserData, myDiv);
+    
+    function deleteUser(userId, td) {
+    console.log("to delete user " + userId);
+
+        if (confirm("Do you really want to delete user " + userId + "? ")) {
+            
+            var error = "";
+            ajax("./webAPIs/deleteUserAPI.jsp?deleteId=" + userId, successfulDelete, error);
+            
+            function successfulDelete(result) {
+                
+                if (result.errorMsg.length > 0) {
+                    if (result.errorMsg.includes("foreign key constraint fails")) {
+                        console.log(result.errorMsg);
+                        alert("This user could not be deleted because there are identified plants associated with this account.");
+                    } else if (result.errorMsg.includes("Problem getting connection:Communications link failure")) {
+                        console.log(result.errorMsg);
+                        alert("The database is currently unavailable. Please try again later.");
+                    } else {
+                        alert(result.errorMsg);
+                    }
+                    
+                } else {
+
+                var dataRow = td.parentNode;
+                var rowIndex = dataRow.rowIndex - 1; 
+                var dataTable = dataRow.parentNode;
+                dataTable.deleteRow(rowIndex);
+            }
+            }
+            
+            console.log(error);
+            
+            if (error.length > 0) {
+                alert(error);
+                
+            }
+
+        }
+    }
 
     function processUserData(usersList) {
         console.log("user list test print:");
@@ -28,10 +68,12 @@ function userTableContent() {
                     "<img src='icons/update.png' style='width:1rem' />", // innerHTML of link
                     '#/userUpdate/' + users[i].webUserId             // href of link
                     );
-            newUsersList[i]._ = SortableTableUtils.makeLink(
-                    "<img src='icons/delete.png' style='width:1rem' />", // innerHTML of link
-                    '#/userDelete/' + users[i].webUserId             // href of link
-                    );
+            newUsersList[i]._ = SortableTableUtils.makeImage("icons/delete.png", '1rem');
+            
+            const userId = users[i].webUserId;
+            newUsersList[i]._.onclick = function () {
+            deleteUser(userId, this);
+            };
 
         }
 

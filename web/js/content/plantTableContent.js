@@ -5,6 +5,47 @@ function plantTableContent() {
     var myDiv = document.createElement("div");
 
     ajax("./webAPIs/listPlantsAPI.jsp", processPlantData, myDiv);
+    
+        function deletePlant(plantId, td) {
+    console.log("to delete user " + plantId);
+
+        if (confirm("Do you really want to delete plant " + plantId + "? ")) {
+            
+            var error = "";
+            ajax("./webAPIs/deletePlantAPI.jsp?deleteId=" + plantId, successfulDelete, error);
+            
+            function successfulDelete(result) {
+                
+                if (result.errorMsg.length > 0) {
+//                    if (result.errorMsg.includes("foreign key constraint fails")) {
+//                        console.log(result.errorMsg);
+//                        alert("This user could not be deleted because there are identified plants associated with this account.");
+//                    } else 
+                        if (result.errorMsg.includes("Problem getting connection:Communications link failure")) {
+                        console.log(result.errorMsg);
+                        alert("The database is currently unavailable. Please try again later.");
+                    } else {
+                        alert(result.errorMsg);
+                    }
+                    
+                } else {
+
+                var dataRow = td.parentNode;
+                var rowIndex = dataRow.rowIndex - 1; 
+                var dataTable = dataRow.parentNode;
+                dataTable.deleteRow(rowIndex);
+            }
+            }
+            
+            console.log(error);
+            
+            if (error.length > 0) {
+                alert(error);
+                
+            }
+
+        }
+    }
 
     function processPlantData(plantsList) {
         console.log("plant list test print:");
@@ -31,6 +72,13 @@ function plantTableContent() {
                     "<img src='icons/update.png' style='width:1rem' />", // innerHTML of link
                     '#/plantUpdate/' + plants[i].plantId             // href of link
                     );
+            
+            newPlantList[i]._ = SortableTableUtils.makeImage("icons/delete.png", '1rem');
+            
+            const plantId = plants[i].plantId;
+            newPlantList[i]._.onclick = function () {
+            deletePlant(plantId, this);
+            };
 
         }
 
