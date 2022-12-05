@@ -1,0 +1,71 @@
+/* 
+    Created on : Sep 12, 2022, 5:25:25 PM
+    Author     : Steve Tolvaj
+*/
+
+.plant {
+    padding: 20px;
+}
+
+.plant .plantInfo {
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.plant .plantInfo p {
+    margin-top: 0;
+    padding-top: 0;
+
+}
+
+.plant .plantInfo img{
+    display: block;
+    width: 80% !important;
+    height: auto !important;
+    padding-top: 0.5rem;
+    padding-right: 1rem;
+    padding-bottom: 1rem;
+}
+
+.plant #plantInput input {
+    min-width: 490px;
+    background-color: rgba(137, 242, 193, 0.7);
+}
+
+
+.plant #plantInput textarea{
+    min-width: 490px;
+    min-height: 4rem;
+    background-color: rgba(137, 242, 193, 0.7);
+}
+
+.plant #plantInput textarea, button, input {
+    display:inline-block;
+    vertical-align: top;
+    margin-bottom: 20px;
+    border: 2px solid;
+    padding: 10px;
+    box-shadow: 3px 3px #1d301d;
+}
+
+.plant #plantInput button {
+    width: 250px;
+    border-radius: 5px;
+    margin-right: 3rem;
+    background-color: rgba(137, 242, 193, 0.7);
+}
+
+.plant #plantInput button:hover { 
+    background-color: #93ffd2;
+}
+
+@media only screen and (min-width: 40rem) {
+    .plant .plantInfo img{
+        float: left;
+        width: 40% !important;
+        height: auto !important;
+        padding-top: 0.5rem;
+        padding-right: 1rem;
+        padding-bottom: 1rem;
+    }
+}

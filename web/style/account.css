@@ -1,0 +1,35 @@
+.account {
+    align-items: center;
+    text-align: center;
+}
+
+
+.account button:hover {
+    background-color: #93ffd2;
+}
+
+.account button input {
+    display: inline-block;
+}
+
+.account button {
+    border-radius: 10px;
+    background-color: rgba(137, 242, 193, 0.7);
+}
+
+.account img {
+    width: 50% !important;
+}
+
+.account input {
+    margin-right: 1rem;
+    margin-left: 1rem;
+    background-color: rgba(137, 242, 193, 0.7);
+}
+
+@media only screen and (max-width: 42rem) { 
+    .account {
+        display: flex;
+        flex-direction: column;
+    }
+}
